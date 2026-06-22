@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found - PropManage SaaS</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+
+    <style>
+        .error-hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .error-illustration {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        .error-illustration img {
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .quick-links-section, .popular-pages-section {
+            padding: 4rem 0;
+        }
+        
+        .link-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .link-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+        }
+        .cta-section h2, .cta-section p { color: white; }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar glass-panel" style="border-radius: 0; border-top: none; border-left: none; border-right: none;">
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo"><i class="fas fa-building"></i> PropManage</a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                        <ul class="nav-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home-2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="demo.html">Demo</a></li>
+                <li><a href="roi-calculator.html">ROI Calculator</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Hero -->
+    <header class="error-hero">
+        <div class="container" data-aos="zoom-in">
+            <div class="error-code">404</div>
+            <h2>Oops! Page Not Found</h2>
+            <p style="max-width: 500px; margin: 1rem auto 2rem;">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+            <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Back to Homepage</a>
+        </div>
+    </header>
+
+    <!-- SECTION 2: Error Illustration -->
+    <section class="error-illustration">
+        <div class="container" data-aos="fade-up">
+            <img src="https://images.unsplash.com/photo-1584824486509-112e4181ff6b?auto=format&fit=crop&w=800&q=80" alt="404 Error Illustration">
+        </div>
+    </section>
+
+    <!-- SECTION 3: Quick Links -->
+    <section class="quick-links-section bg-main">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h3>Looking for something specific?</h3>
+            </div>
+            
+            <div class="grid-3">
+                <a href="features.html" class="link-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-star fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Platform Features</h4>
+                    <p class="text-muted" style="font-size: 0.875rem;">Explore our tools.</p>
+                </a>
+                <a href="pricing.html" class="link-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-tags fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Pricing Plans</h4>
+                    <p class="text-muted" style="font-size: 0.875rem;">View our simple pricing.</p>
+                </a>
+                <a href="contact.html" class="link-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-life-ring fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Help & Support</h4>
+                    <p class="text-muted" style="font-size: 0.875rem;">Get in touch with us.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Popular Pages -->
+    <section class="popular-pages-section">
+        <div class="container">
+            <div class="text-center mb-4" data-aos="fade-up">
+                <h3>Our Most Popular Resources</h3>
+            </div>
+            
+            <div class="glass-panel" style="padding: 2rem; max-width: 800px; margin: 0 auto;" data-aos="zoom-in">
+                <ul style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+                    <li><a href="about.html" class="btn btn-outline" style="border-radius: 20px; padding: 0.5rem 1rem;">About Us</a></li>
+                    <li><a href="login.html" class="btn btn-outline" style="border-radius: 20px; padding: 0.5rem 1rem;">Client Login</a></li>
+                    <li><a href="register.html" class="btn btn-outline" style="border-radius: 20px; padding: 0.5rem 1rem;">Start Free Trial</a></li>
+                    <li><a href="index.html" class="btn btn-outline" style="border-radius: 20px; padding: 0.5rem 1rem;">Home Page</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: CTA Section -->
+    <section class="cta-section">
+        <div class="container" data-aos="fade-up">
+            <h2 class="mb-3">Still Can't Find What You Need?</h2>
+            <p class="mb-4" style="max-width: 600px; margin-left: auto; margin-right: auto;">Our support team is available 24/7 to help you navigate our platform and answer any questions.</p>
+            <a href="contact.html" class="btn" style="background: white; color: var(--primary);">Contact Support</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo mb-3"><i class="fas fa-building"></i> PropManage</a>
+                    <p>The all-in-one SaaS platform designed to help landlords and property managers scale their portfolios with ease and efficiency.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home 1</a></li>
+                        <li><a href="home-2.html">Home 2</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="features.html">Tenant Portal</a></li>
+                        <li><a href="features.html">Rent Collection</a></li>
+                        <li><a href="features.html">Maintenance</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for property management tips and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary" style="padding: 0.75rem;"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PropManage SaaS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

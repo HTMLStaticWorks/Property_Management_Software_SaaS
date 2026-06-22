@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - PropManage SaaS</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+
+    <style>
+        .cs-hero {
+            padding: 10rem 0 5rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-main) 0%, var(--primary-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .cs-hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        .cs-hero-content { position: relative; z-index: 1; }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        .countdown-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            min-width: 120px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+        .countdown-item h3 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin: 0;
+            line-height: 1;
+        }
+        .countdown-item span {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-top: 0.5rem;
+        }
+        
+        .subscription-section {
+            padding: 5rem 0;
+            background: var(--bg-card);
+        }
+        .subscribe-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 0.5rem;
+        }
+        .subscribe-form input { flex: 1; }
+        
+        .upcoming-features {
+            padding: 5rem 0;
+            background: var(--bg-main);
+        }
+        .feature-teaser {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            height: 100%;
+        }
+        .feature-teaser:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        .feature-teaser i { font-size: 2rem; color: var(--primary); margin-bottom: 1rem; }
+        
+        .social-section {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+        }
+        .social-section h3 { color: white; margin-bottom: 2rem; }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            background: white;
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .subscribe-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar glass-panel" style="border-radius: 0; border-top: none; border-left: none; border-right: none;">
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo"><i class="fas fa-building"></i> PropManage</a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                        <ul class="nav-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home-2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="demo.html">Demo</a></li>
+                <li><a href="roi-calculator.html">ROI Calculator</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Hero -->
+    <header class="cs-hero">
+        <div class="container cs-hero-content" data-aos="fade-up">
+            <span class="subheading" style="background: rgba(79, 70, 229, 0.1); padding: 0.5rem 1rem; border-radius: 20px;">Coming Soon</span>
+            <h1 class="mb-3 mt-3">We're Launching Something Huge</h1>
+            <p style="max-width: 600px; margin: 0 auto;">Our next-generation property management module is almost ready. It will change the way you handle maintenance and tenant communications.</p>
+        </div>
+    </header>
+
+    <!-- SECTION 2: Countdown Timer -->
+    <section style="margin-top: -4rem; position: relative; z-index: 2;">
+        <div class="container" data-aos="zoom-in">
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <h3 id="days">00</h3>
+                    <span>Days</span>
+                </div>
+                <div class="countdown-item">
+                    <h3 id="hours">00</h3>
+                    <span>Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <h3 id="minutes">00</h3>
+                    <span>Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <h3 id="seconds">00</h3>
+                    <span>Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Email Subscription -->
+    <section class="subscription-section">
+        <div class="container text-center" data-aos="fade-up">
+            <h3 class="mb-3">Be the first to know when we go live.</h3>
+            <p class="mb-4">Leave your email address to receive an exclusive early access invitation.</p>
+            
+            <form class="subscribe-form">
+                <input type="email" class="form-control" placeholder="Enter your work email" required>
+                <button type="submit" class="btn btn-primary">Get Notified</button>
+            </form>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">We respect your privacy. No spam, ever.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Upcoming Features (4 Cards) -->
+    <section class="upcoming-features">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Sneak Peek</span>
+                <h2>What's Coming in V2.0</h2>
+            </div>
+            
+            <div class="grid-4">
+                <div class="feature-teaser" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-robot"></i>
+                    <h4>AI-Powered Chatbots</h4>
+                    <p class="text-muted" style="font-size: 0.875rem;">Automate routine tenant questions with our new AI assistant.</p>
+                </div>
+                <div class="feature-teaser" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>New Native App</h4>
+                    <p class="text-muted" style="font-size: 0.875rem;">A fully rebuilt mobile app for iOS and Android.</p>
+                </div>
+                <div class="feature-teaser" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-plug"></i>
+                    <h4>Zapier Integration</h4>
+                    <p class="text-muted" style="font-size: 0.875rem;">Connect PropManage to 3000+ apps in the Zapier ecosystem.</p>
+                </div>
+                <div class="feature-teaser" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-file-contract"></i>
+                    <h4>Smart Contracts</h4>
+                    <p class="text-muted" style="font-size: 0.875rem;">Blockchain-verified leasing agreements for maximum security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Social Media Section -->
+    <section class="social-section">
+        <div class="container" data-aos="fade-up">
+            <h3>Follow our progress on social media</h3>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="border-top: none;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo mb-3"><i class="fas fa-building"></i> PropManage</a>
+                    <p>The all-in-one SaaS platform designed to help landlords and property managers scale their portfolios with ease and efficiency.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home 1</a></li>
+                        <li><a href="home-2.html">Home 2</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="features.html">Tenant Portal</a></li>
+                        <li><a href="features.html">Rent Collection</a></li>
+                        <li><a href="features.html">Maintenance</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@propmanage.com"><i class="fas fa-envelope" style="margin-right: 10px;"></i>hello@propmanage.com</a></li>
+                        <li><a href="tel:+18001234567"><i class="fas fa-phone" style="margin-right: 10px;"></i>+1 (800) 123-4567</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PropManage SaaS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Countdown Timer Logic
+        const countDownDate = new Date().getTime() + (14 * 24 * 60 * 60 * 1000); // 14 days from now
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
+

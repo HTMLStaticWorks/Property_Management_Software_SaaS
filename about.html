@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - PropManage SaaS</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+
+    <style>
+        .page-header {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+        }
+        .page-header h1, .page-header p { color: white; }
+        
+        .team-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .team-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-xl); }
+        .team-img { width: 100%; height: 250px; object-fit: cover; }
+        .team-info { padding: 1.5rem; }
+        .team-social a { color: var(--text-muted); margin: 0 0.5rem; transition: var(--transition); }
+        .team-social a:hover { color: var(--primary); }
+        
+        .value-card {
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .value-card:hover { border-color: var(--primary); background: var(--primary-light); }
+        
+        /* Vertical Growth Timeline */
+        .growth-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .growth-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-light);
+        }
+        .growth-item {
+            position: relative;
+            padding-left: 100px;
+            margin-bottom: 3rem;
+        }
+        .growth-year {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: var(--shadow-md);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar glass-panel" style="border-radius: 0; border-top: none; border-left: none; border-right: none;">
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo"><i class="fas fa-building"></i> PropManage</a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                        <ul class="nav-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home-2.html">Home 2</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="demo.html">Demo</a></li>
+                <li><a href="roi-calculator.html">ROI Calculator</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Company Story (Hero) -->
+    <header class="page-header">
+        <div class="container" data-aos="fade-up">
+            <h1 class="mb-3">Our Story</h1>
+            <p style="max-width: 700px; margin: 0 auto;">Built by property managers, for property managers. Discover how we're transforming the real estate industry through innovative software.</p>
+        </div>
+    </header>
+
+    <section class="py-section">
+        <div class="container">
+            <div class="grid-2 align-center">
+                <div data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Company Team" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                </div>
+                <div data-aos="fade-left" style="padding-left: 2rem;">
+                    <span class="subheading">The Beginning</span>
+                    <h2 class="mb-3">From Frustration to Innovation</h2>
+                    <p class="mb-3">In 2018, our founders were managing a portfolio of 500+ units. Frustrated by the fragmented tools, lost spreadsheets, and endless text messages, they realized the industry needed a better way.</p>
+                    <p>PropManage was born out of a desire to create a single, unified platform that handles every aspect of property management seamlessly. Today, we empower thousands of landlords worldwide to operate more efficiently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Mission & Vision -->
+    <section class="py-section bg-main">
+        <div class="container">
+            <div class="grid-2">
+                <div class="glass-panel" style="padding: 3rem;" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);"><i class="fas fa-bullseye"></i></div>
+                    <h3>Our Mission</h3>
+                    <p>To eliminate the friction of property management by providing intuitive, automated software that helps landlords grow their portfolios while delivering exceptional tenant experiences.</p>
+                </div>
+                <div class="glass-panel" style="padding: 3rem;" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);"><i class="fas fa-eye"></i></div>
+                    <h3>Our Vision</h3>
+                    <p>To become the global standard operating system for real estate investors, fostering transparent, efficient, and profitable property management for generations to come.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Leadership Team (4 Cards) -->
+    <section class="py-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Our People</span>
+                <h2>Meet the Leadership Team</h2>
+            </div>
+            
+            <div class="grid-4">
+                <div class="team-card" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80" alt="Michael Chen" class="team-img">
+                    <div class="team-info">
+                        <h4>Michael Chen</h4>
+                        <p class="subheading" style="margin:0; font-size: 0.8rem;">CEO & Co-Founder</p>
+                        <div class="team-social mt-2">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80" alt="Sarah Jenkins" class="team-img">
+                    <div class="team-info">
+                        <h4>Sarah Jenkins</h4>
+                        <p class="subheading" style="margin:0; font-size: 0.8rem;">Chief Operating Officer</p>
+                        <div class="team-social mt-2">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=400&q=80" alt="David Rodriguez" class="team-img">
+                    <div class="team-info">
+                        <h4>David Rodriguez</h4>
+                        <p class="subheading" style="margin:0; font-size: 0.8rem;">Chief Technology Officer</p>
+                        <div class="team-social mt-2">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=400&q=80" alt="Emily Davis" class="team-img">
+                    <div class="team-info">
+                        <h4>Emily Davis</h4>
+                        <p class="subheading" style="margin:0; font-size: 0.8rem;">Head of Customer Success</p>
+                        <div class="team-social mt-2">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Growth Timeline -->
+    <section class="py-section bg-main">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Our Journey</span>
+                <h2>Company Growth Timeline</h2>
+            </div>
+            
+            <div class="growth-timeline">
+                <div class="growth-item" data-aos="fade-up">
+                    <div class="growth-year">2018</div>
+                    <h4>The Foundation</h4>
+                    <p>PropManage was founded in Austin, Texas. We launched our beta version to a closed group of 50 local property managers.</p>
+                </div>
+                <div class="growth-item" data-aos="fade-up">
+                    <div class="growth-year">2020</div>
+                    <h4>Series A & Expansion</h4>
+                    <p>Secured $15M in Series A funding. Expanded our feature set to include automated maintenance dispatch and API integrations.</p>
+                </div>
+                <div class="growth-item" data-aos="fade-up">
+                    <div class="growth-year">2022</div>
+                    <h4>Global Reach</h4>
+                    <p>Crossed the milestone of 5,000 active portfolios managed. Opened our first international office in London.</p>
+                </div>
+                <div class="growth-item" data-aos="fade-up">
+                    <div class="growth-year">2026</div>
+                    <h4>Enterprise Enterprise</h4>
+                    <p>Launched the Enterprise tier for institutional investors, managing over $50B in real estate assets globally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Core Values -->
+    <section class="py-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">What Drives Us</span>
+                <h2>Our Core Values</h2>
+            </div>
+            
+            <div class="grid-4">
+                <div class="value-card" data-aos="flip-left" data-aos-delay="100">
+                    <i class="fas fa-heart fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Customer First</h4>
+                    <p style="font-size: 0.9rem;">We build features based on what property managers actually need, not what we think they need.</p>
+                </div>
+                <div class="value-card" data-aos="flip-left" data-aos-delay="200">
+                    <i class="fas fa-shield-alt fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Bank-Level Security</h4>
+                    <p style="font-size: 0.9rem;">Trust is our currency. We protect your financial data with the highest security standards.</p>
+                </div>
+                <div class="value-card" data-aos="flip-left" data-aos-delay="300">
+                    <i class="fas fa-bolt fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Continuous Innovation</h4>
+                    <p style="font-size: 0.9rem;">The real estate market evolves rapidly, and our software moves faster to keep you ahead.</p>
+                </div>
+                <div class="value-card" data-aos="flip-left" data-aos-delay="400">
+                    <i class="fas fa-users fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Inclusive Growth</h4>
+                    <p style="font-size: 0.9rem;">We believe in empowering all stakeholders—from institutional investors to individual tenants.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo mb-3"><i class="fas fa-building"></i> PropManage</a>
+                    <p>The all-in-one SaaS platform designed to help landlords and property managers scale their portfolios with ease and efficiency.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home 1</a></li>
+                        <li><a href="home-2.html">Home 2</a></li>
+                        <li><a href="about.html" class="active">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="features.html">Tenant Portal</a></li>
+                        <li><a href="features.html">Rent Collection</a></li>
+                        <li><a href="features.html">Maintenance</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for property management tips and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary" style="padding: 0.75rem;"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PropManage SaaS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

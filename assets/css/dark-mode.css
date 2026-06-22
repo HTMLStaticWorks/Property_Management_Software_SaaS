@@ -1,0 +1,40 @@
+[data-theme="dark"] {
+    /* Background Colors for Dark Mode */
+    --bg-main: #0F172A;
+    --bg-card: #1E293B;
+    --border-color: #334155;
+    
+    /* Text Colors for Dark Mode */
+    --text-dark: #F8FAFC;
+    --text-muted: #94A3B8;
+    
+    /* Glassmorphism adjustments for Dark Mode */
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    
+    /* Form Elements */
+    --form-bg: #1E293B;
+    --form-border: #334155;
+}
+
+[data-theme="dark"] .bg-pattern::before {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+}
+
+[data-theme="dark"] .shape-divider .shape-fill {
+    fill: var(--bg-main);
+}
+
+/* Specific component overrides for dark mode if needed */
+[data-theme="dark"] .card-icon {
+    background: rgba(79, 70, 229, 0.15);
+}
+
+[data-theme="dark"] .card-3d {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .card-3d:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}

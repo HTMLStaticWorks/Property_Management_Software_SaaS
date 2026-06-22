@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - PropManage SaaS</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+
+    <style>
+        .pricing-hero {
+            padding: 10rem 0 5rem;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--primary-light), var(--bg-main));
+        }
+        .billing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--border-color);
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px; width: 26px;
+            left: 4px; bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider { background-color: var(--primary); }
+        input:checked + .slider:before { transform: translateX(26px); }
+        
+        .pricing-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+        .pricing-card.popular:hover { transform: scale(1.05) translateY(-10px); }
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .price {
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 1rem 0;
+        }
+        .price span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+        .features-list {
+            list-style: none;
+            margin: 2rem 0;
+            flex-grow: 1;
+        }
+        .features-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .features-list li i { color: var(--success); }
+        .features-list li.disabled { color: var(--text-muted); }
+        .features-list li.disabled i { color: var(--text-muted); }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .comparison-table th {
+            background: var(--primary-light);
+            font-weight: 600;
+        }
+        .comparison-table td:first-child { text-align: left; font-weight: 500; }
+        .comparison-table i.fa-check { color: var(--success); }
+        .comparison-table i.fa-times { color: var(--text-muted); }
+
+        /* ROI section layout */
+        .roi-wrapper {
+            background: var(--primary);
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: 4rem;
+            box-shadow: var(--shadow-xl);
+        }
+        .roi-input-group label { color: white; }
+        .roi-input-group input[type="range"] { accent-color: var(--accent); }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            background: var(--bg-card);
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        .faq-question:hover { color: var(--primary); }
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-muted);
+        }
+        .faq-item.active .faq-answer {
+            padding-bottom: 1.5rem;
+            max-height: 500px;
+        }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+        
+        @media (max-width: 1024px) {
+            .pricing-card.popular { transform: scale(1); }
+            .pricing-card.popular:hover { transform: translateY(-10px); }
+        }
+        @media (max-width: 768px) {
+            .comparison-table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar glass-panel" style="border-radius: 0; border-top: none; border-left: none; border-right: none;">
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo"><i class="fas fa-building"></i> PropManage</a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                        <ul class="nav-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home-2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="demo.html">Demo</a></li>
+                <li><a href="roi-calculator.html">ROI Calculator</a></li>
+                <li><a href="pricing.html" class="active">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Pricing Hero -->
+    <header class="pricing-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="subheading">Transparent Pricing</span>
+            <h1 class="mb-3">Simple Plans for Portfolios of All Sizes</h1>
+            <p>No hidden fees. No setup costs. Cancel anytime.</p>
+            
+            <div class="billing-toggle">
+                <span style="font-weight: 500;">Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="billingSwitch" checked>
+                    <span class="slider"></span>
+                </label>
+                <span style="font-weight: 500;">Annually <span style="color: var(--success); font-size: 0.8rem; background: rgba(16,185,129,0.1); padding: 2px 8px; border-radius: 10px; margin-left: 5px;">Save 20%</span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 2: Pricing Plans (4 Cards) -->
+    <section class="py-section" style="margin-top: -3rem; position: relative; z-index: 2;">
+        <div class="container">
+            <div class="grid-4 align-center">
+                
+                <!-- Plan 1 -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Starter</h3>
+                    <p class="text-muted">For independent landlords.</p>
+                    <div class="price">$<span class="price-val">29</span><span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Up to 15 Units</li>
+                        <li><i class="fas fa-check"></i> Rent Collection</li>
+                        <li><i class="fas fa-check"></i> Basic Maintenance</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Financial Reports</li>
+                        <li class="disabled"><i class="fas fa-times"></i> API Access</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-outline" style="width: 100%;">Start Free Trial</a>
+                </div>
+                
+                <!-- Plan 2 -->
+                <div class="pricing-card popular" data-aos="fade-up" data-aos-delay="200">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Growth</h3>
+                    <p class="text-muted">For small property managers.</p>
+                    <div class="price">$<span class="price-val">79</span><span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Up to 50 Units</li>
+                        <li><i class="fas fa-check"></i> Rent Collection</li>
+                        <li><i class="fas fa-check"></i> Advanced Maintenance</li>
+                        <li><i class="fas fa-check"></i> Financial Reports</li>
+                        <li class="disabled"><i class="fas fa-times"></i> API Access</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-primary" style="width: 100%;">Start Free Trial</a>
+                </div>
+                
+                <!-- Plan 3 -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Pro</h3>
+                    <p class="text-muted">For scaling agencies.</p>
+                    <div class="price">$<span class="price-val">199</span><span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Up to 250 Units</li>
+                        <li><i class="fas fa-check"></i> Everything in Growth</li>
+                        <li><i class="fas fa-check"></i> E-Signatures</li>
+                        <li><i class="fas fa-check"></i> Owner Portals</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Dedicated Manager</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-outline" style="width: 100%;">Start Free Trial</a>
+                </div>
+                
+                <!-- Plan 4 -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>Enterprise</h3>
+                    <p class="text-muted">For institutional portfolios.</p>
+                    <div class="price">Custom</div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Unlimited Units</li>
+                        <li><i class="fas fa-check"></i> Everything in Pro</li>
+                        <li><i class="fas fa-check"></i> API Access</li>
+                        <li><i class="fas fa-check"></i> Custom Integrations</li>
+                        <li><i class="fas fa-check"></i> Dedicated Manager</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline" style="width: 100%;">Contact Sales</a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Feature Comparison Table -->
+    <section class="py-section bg-main">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Compare Plans</span>
+                <h2>Detailed Feature Breakdown</h2>
+            </div>
+            
+            <div data-aos="fade-up">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Starter</th>
+                            <th>Growth</th>
+                            <th>Pro</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Unit Limit</td>
+                            <td>15</td>
+                            <td>50</td>
+                            <td>250</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>Online Rent Collection</td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Maintenance Tracking</td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Financial Reporting</td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Owner Portals</td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>API Access</td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: ROI Calculator -->
+    <section class="py-section">
+        <div class="container">
+            <div class="roi-wrapper" data-aos="zoom-in">
+                <div class="text-center mb-5">
+                    <h2>Calculate Your Potential ROI</h2>
+                    <p style="color: rgba(255,255,255,0.8);">See the tangible value PropManage brings to your bottom line.</p>
+                </div>
+                
+                <div class="grid-2 align-center">
+                    <div>
+                        <div class="roi-input-group mb-4">
+                            <label class="form-label d-flex justify-between">Units Managed: <span id="roiUnitsVal" style="font-weight: 600;">100</span></label>
+                            <input type="range" id="roiUnits" class="roi-slider" style="width: 100%;" min="10" max="1000" value="100">
+                        </div>
+                        <div class="roi-input-group mb-4">
+                            <label class="form-label d-flex justify-between">Avg. Hourly Wage ($): <span id="roiWageVal" style="font-weight: 600;">25</span></label>
+                            <input type="range" id="roiWage" class="roi-slider" style="width: 100%;" min="15" max="100" value="25">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p style="color: rgba(255,255,255,0.8); margin-bottom: 0;">Time Saved Annually</p>
+                        <h3 style="font-size: 2.5rem; margin-bottom: 1rem;"><span id="roiTime">450</span> Hours</h3>
+                        <p style="color: rgba(255,255,255,0.8); margin-bottom: 0;">Equivalent Value</p>
+                        <h3 style="font-size: 2.5rem; color: var(--success);">$<span id="roiValue">11,250</span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: FAQ Accordion -->
+    <section class="py-section bg-main">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Have Questions?</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            
+            <div style="max-width: 800px; margin: 0 auto;" data-aos="fade-up">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is there a free trial?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p style="margin-top: 1rem;">Yes, we offer a 14-day fully featured free trial on all our plans. No credit card required to sign up.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I change my plan later?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p style="margin-top: 1rem;">Absolutely. You can upgrade or downgrade your plan at any time right from your dashboard settings.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are there setup fees?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p style="margin-top: 1rem;">No! All our self-serve plans have $0 setup fees. Enterprise plans may include a custom onboarding fee depending on the complexity of data migration.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How is my data secured?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p style="margin-top: 1rem;">We use bank-level 256-bit AES encryption to protect all your sensitive financial and tenant data. Our servers are hosted on AWS with strict access controls.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo mb-3"><i class="fas fa-building"></i> PropManage</a>
+                    <p>The all-in-one SaaS platform designed to help landlords and property managers scale their portfolios with ease and efficiency.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home 1</a></li>
+                        <li><a href="home-2.html">Home 2</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="features.html">Tenant Portal</a></li>
+                        <li><a href="features.html">Rent Collection</a></li>
+                        <li><a href="features.html">Maintenance</a></li>
+                        <li><a href="pricing.html" class="active">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for property management tips and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary" style="padding: 0.75rem;"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PropManage SaaS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Pricing Toggle Logic
+        const billingSwitch = document.getElementById('billingSwitch');
+        const priceVals = document.querySelectorAll('.price-val');
+        const monthlyPrices = [29, 79, 199];
+        const annualPrices = [23, 63, 159];
+
+        if(billingSwitch) {
+            billingSwitch.addEventListener('change', (e) => {
+                const isAnnual = e.target.checked;
+                priceVals.forEach((el, index) => {
+                    el.textContent = isAnnual ? annualPrices[index] : monthlyPrices[index];
+                });
+            });
+        }
+
+        // ROI Logic
+        const roiUnits = document.getElementById('roiUnits');
+        const roiWage = document.getElementById('roiWage');
+        const roiUnitsVal = document.getElementById('roiUnitsVal');
+        const roiWageVal = document.getElementById('roiWageVal');
+        const roiTime = document.getElementById('roiTime');
+        const roiValue = document.getElementById('roiValue');
+
+        function calculateROI() {
+            const units = parseInt(roiUnits.value);
+            const wage = parseInt(roiWage.value);
+            
+            roiUnitsVal.textContent = units;
+            roiWageVal.textContent = wage;
+            
+            // Assume 4.5 hours saved per unit per year
+            const timeSaved = units * 4.5;
+            const valueSaved = timeSaved * wage;
+            
+            roiTime.textContent = timeSaved.toLocaleString();
+            roiValue.textContent = valueSaved.toLocaleString();
+        }
+
+        if(roiUnits && roiWage) {
+            roiUnits.addEventListener('input', calculateROI);
+            roiWage.addEventListener('input', calculateROI);
+            calculateROI();
+        }
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if(!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

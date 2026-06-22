@@ -1,0 +1,69 @@
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .logo {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+[dir="rtl"] .nav-links {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+[dir="rtl"] .nav-links a::after {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .btn {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .btn i {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+[dir="rtl"] .footer-links a:hover {
+    padding-left: 0;
+    padding-right: 5px;
+}
+
+[dir="rtl"] .ml-auto {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+[dir="rtl"] .mr-auto {
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+
+[dir="rtl"] .pl-3 {
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+[dir="rtl"] .pr-3 {
+    padding-right: 0;
+    padding-left: 1rem;
+}
+
+/* Adjustments for icons and chevrons */
+[dir="rtl"] .fa-chevron-right::before {
+    content: "\f053"; /* Left chevron */
+}
+
+[dir="rtl"] .fa-chevron-left::before {
+    content: "\f054"; /* Right chevron */
+}
+
+[dir="rtl"] .fa-arrow-right::before {
+    content: "\f060"; /* Left arrow */
+}
+
+[dir="rtl"] .fa-arrow-left::before {
+    content: "\f061"; /* Right arrow */
+}

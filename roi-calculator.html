@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator - PropManage SaaS</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+
+    <style>
+        .roi-hero {
+            padding: 10rem 0 6rem;
+            text-align: center;
+            background: var(--bg-card);
+            position: relative;
+        }
+        
+        .calculator-widget {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border-color);
+            margin-top: -4rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .calc-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            outline: none;
+            -webkit-appearance: none;
+            background: var(--border-color);
+            margin-top: 1rem;
+        }
+        .calc-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+        }
+        
+        .result-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .roi-section { padding: 5rem 0; }
+        
+        .savings-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar glass-panel" style="border-radius: 0; border-top: none; border-left: none; border-right: none;">
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo"><i class="fas fa-building"></i> PropManage</a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                        <ul class="nav-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home-2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="demo.html">Demo</a></li>
+                <li><a href="roi-calculator.html" class="active">ROI Calculator</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header class="roi-hero">
+        <div class="container" data-aos="fade-up">
+            <span class="subheading">Investment Returns</span>
+            <h1 class="mb-3">Calculate Your Portfolio's Hidden Value</h1>
+            <p style="max-width: 600px; margin: 0 auto;">See exactly how much time and money you can save by switching to PropManage's automated platform.</p>
+        </div>
+    </header>
+
+    <!-- 2. Interactive ROI Calculator -->
+    <section>
+        <div class="container">
+            <div class="calculator-widget" data-aos="fade-up" data-aos-delay="100">
+                <div class="grid-2 align-center">
+                    <div>
+                        <div class="form-group mb-4">
+                            <label class="form-label d-flex justify-between">
+                                Properties Managed
+                                <span id="valUnits" style="color: var(--primary); font-weight: 600; font-size: 1.25rem;">150</span>
+                            </label>
+                            <input type="range" id="inputUnits" class="calc-slider" min="10" max="1000" value="150" step="10">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="form-label d-flex justify-between">
+                                Avg. Monthly Rent ($)
+                                <span id="valRent" style="color: var(--primary); font-weight: 600; font-size: 1.25rem;">$1,800</span>
+                            </label>
+                            <input type="range" id="inputRent" class="calc-slider" min="500" max="5000" value="1800" step="100">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="form-label d-flex justify-between">
+                                Property Manager Hourly Wage ($)
+                                <span id="valWage" style="color: var(--primary); font-weight: 600; font-size: 1.25rem;">$30</span>
+                            </label>
+                            <input type="range" id="inputWage" class="calc-slider" min="15" max="100" value="30" step="1">
+                        </div>
+                    </div>
+                    
+                    <div class="result-box">
+                        <p style="margin-bottom: 0; opacity: 0.9;">Estimated Annual Savings</p>
+                        <h2 id="valSavings" style="font-size: 3.5rem; margin: 0.5rem 0; color: white;">$24,300</h2>
+                        <p style="font-size: 0.9rem; opacity: 0.8;">Based on reduced administrative hours, lower vacancy rates, and eliminated late payment losses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Time Savings Analysis -->
+    <section class="roi-section bg-main">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Efficiency</span>
+                <h2>Where You Save Time</h2>
+            </div>
+            
+            <div class="grid-3">
+                <div class="savings-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-clock fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Rent Collection</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">Save 15 hours/month automating invoice generation, reminders, and ledger updates.</p>
+                </div>
+                <div class="savings-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-tools fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Maintenance</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">Save 10 hours/month with tenant self-service portals and automated vendor dispatch.</p>
+                </div>
+                <div class="savings-card" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-file-invoice-dollar fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Reporting</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">Save 20 hours/month instantly generating owner packets and tax documents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Cost Reduction Comparison -->
+    <section class="roi-section">
+        <div class="container">
+            <div class="grid-2 align-center">
+                <div data-aos="fade-right">
+                    <span class="subheading">Cost Analysis</span>
+                    <h2 class="mb-3">Eliminate Fragmented Software Costs</h2>
+                    <p class="mb-4">Consolidate your tech stack. Stop paying separately for e-signatures, accounting software, and tenant screening tools.</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-3" style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                            <span>Accounting Software</span> <span style="color: var(--danger);">-$500/mo</span>
+                        </li>
+                        <li class="mb-3" style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                            <span>E-Signature Tool</span> <span style="color: var(--danger);">-$150/mo</span>
+                        </li>
+                        <li class="mb-3" style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                            <span>Maintenance CRM</span> <span style="color: var(--danger);">-$300/mo</span>
+                        </li>
+                        <li style="display: flex; justify-content: space-between; font-weight: 600; padding-top: 0.5rem;">
+                            <span>PropManage All-In-One</span> <span style="color: var(--success);">$199/mo</span>
+                        </li>
+                    </ul>
+                </div>
+                <div data-aos="fade-left" style="text-align: center;">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Cost Reduction" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Revenue Growth Visualization -->
+    <section class="roi-section bg-main">
+        <div class="container text-center">
+            <span class="subheading" data-aos="fade-up">Growth</span>
+            <h2 class="mb-5" data-aos="fade-up">Scale Without Scaling Overhead</h2>
+            
+            <div data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Growth Chart" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); max-width: 100%;">
+            </div>
+            <p class="mt-4 text-muted" style="max-width: 700px; margin: 2rem auto 0;">By automating daily operations, our clients typically increase their door count by 30% in the first year without needing to hire additional administrative staff.</p>
+        </div>
+    </section>
+
+    <!-- 6. Success Stories (4 Cards) -->
+    <section class="roi-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Proven Results</span>
+                <h2>Client Success Stories</h2>
+            </div>
+            
+            <div class="grid-4">
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon"><i class="fas fa-arrow-up"></i></div>
+                    <h4>45% Growth</h4>
+                    <p>"We scaled from 200 to 290 doors in six months without hiring new staff thanks to PropManage."</p>
+                    <span style="font-weight: 600; font-size: 0.8rem; color: var(--primary);">— Skyline Realty</span>
+                </div>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h4>$12k Saved</h4>
+                    <p>"Consolidating our software stack saved us over $1,000 per month immediately."</p>
+                    <span style="font-weight: 600; font-size: 0.8rem; color: var(--primary);">— Apex Property Group</span>
+                </div>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>99% Collection</h4>
+                    <p>"Automated reminders and late fees brought our on-time rent collection up to 99%."</p>
+                    <span style="font-weight: 600; font-size: 0.8rem; color: var(--primary);">— Metro Investments</span>
+                </div>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon"><i class="fas fa-stopwatch"></i></div>
+                    <h4>20 Hrs/Week</h4>
+                    <p>"Our maintenance coordinator saves 20 hours a week using the automated vendor dispatch."</p>
+                    <span style="font-weight: 600; font-size: 0.8rem; color: var(--primary);">— Riverfront Mgt</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. ROI Benefits -->
+    <section class="roi-section bg-main">
+        <div class="container">
+            <div class="grid-2 align-center">
+                <div data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Benefits" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                </div>
+                <div data-aos="fade-left" style="padding-left: 2rem;">
+                    <span class="subheading">Intangible Value</span>
+                    <h2 class="mb-3">Beyond The Numbers</h2>
+                    <div class="mb-3">
+                        <h4 class="mb-1"><i class="fas fa-shield-alt" style="color: var(--primary); margin-right: 10px;"></i> Reduced Liability</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Digital trails for all communications and maintenance requests protect you during disputes.</p>
+                    </div>
+                    <div class="mb-3">
+                        <h4 class="mb-1"><i class="fas fa-smile" style="color: var(--primary); margin-right: 10px;"></i> Higher Retention</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">A professional tenant experience leads to more lease renewals and lower turnover costs.</p>
+                    </div>
+                    <div>
+                        <h4 class="mb-1"><i class="fas fa-briefcase" style="color: var(--primary); margin-right: 10px;"></i> Professional Image</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Impress property owners with bank-grade reports, making it easier to win new business.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. CTA Section -->
+    <section class="roi-section" style="background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white;">
+        <div class="container text-center" data-aos="zoom-in">
+            <h2 style="color: white; margin-bottom: 1.5rem;">Start Realizing Your ROI Today</h2>
+            <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 3rem;">Join the platform built to help you scale efficiently. Set up takes less than 15 minutes.</p>
+            <div class="d-flex justify-center" style="gap: 1rem;">
+                <a href="register.html" class="btn" style="background: white; color: var(--primary);">Start 14-Day Free Trial</a>
+                <a href="demo.html" class="btn btn-outline" style="border-color: white; color: white;">Book a Live Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo mb-3"><i class="fas fa-building"></i> PropManage</a>
+                    <p>The all-in-one SaaS platform designed to help landlords and property managers scale their portfolios with ease and efficiency.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home 1</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="demo.html">Demo Center</a></li>
+                        <li><a href="roi-calculator.html" class="active">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="features.html">Tenant Portal</a></li>
+                        <li><a href="features.html">Rent Collection</a></li>
+                        <li><a href="features.html">Maintenance</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for property management tips and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary" style="padding: 0.75rem;"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PropManage SaaS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Custom ROI Calculator Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputUnits = document.getElementById('inputUnits');
+            const inputRent = document.getElementById('inputRent');
+            const inputWage = document.getElementById('inputWage');
+            
+            const valUnits = document.getElementById('valUnits');
+            const valRent = document.getElementById('valRent');
+            const valWage = document.getElementById('valWage');
+            
+            const valSavings = document.getElementById('valSavings');
+            
+            function calculateTotalROI() {
+                const units = parseInt(inputUnits.value);
+                const rent = parseInt(inputRent.value);
+                const wage = parseInt(inputWage.value);
+                
+                valUnits.textContent = units;
+                valRent.textContent = '$' + rent.toLocaleString();
+                valWage.textContent = '$' + wage.toLocaleString();
+                
+                // Formula: 
+                // Time saved: ~5 hours per unit annually
+                // Vacancy savings: ~2% increase in occupancy
+                const timeSavings = units * 5 * wage;
+                const vacancySavings = (units * rent * 12) * 0.02;
+                
+                const totalAnnualSavings = timeSavings + vacancySavings;
+                
+                valSavings.textContent = '$' + totalAnnualSavings.toLocaleString(undefined, { maximumFractionDigits: 0 });
+            }
+            
+            if(inputUnits && inputRent && inputWage) {
+                inputUnits.addEventListener('input', calculateTotalROI);
+                inputRent.addEventListener('input', calculateTotalROI);
+                inputWage.addEventListener('input', calculateTotalROI);
+                calculateTotalROI();
+            }
+        });
+    </script>
+</body>
+</html>
+

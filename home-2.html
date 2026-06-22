@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PropManage - Advanced SaaS for Enterprise Property Managers</title>
+    <meta name="description" content="Scale your real estate portfolio with our enterprise-grade property management software featuring advanced reporting and ROI calculators.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+
+    <style>
+        .premium-hero {
+            padding: 12rem 0 6rem;
+            background: linear-gradient(135deg, var(--bg-main) 0%, var(--primary-light) 100%);
+            position: relative;
+        }
+        .hero-video-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .hero-video-btn .play-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            box-shadow: var(--shadow-md);
+            font-size: 1.25rem;
+        }
+        .hero-video-btn:hover .play-icon {
+            transform: scale(1.1);
+            background: var(--primary);
+            color: white;
+        }
+        .roi-calculator {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
+        }
+        .roi-input-group {
+            margin-bottom: 1.5rem;
+        }
+        .roi-slider {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .roi-result {
+            background: var(--primary-light);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .roi-result h3 { color: var(--primary); font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .communication-mockup {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .chat-header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            font-weight: 500;
+        }
+        .chat-body {
+            padding: 1rem;
+            background: var(--bg-main);
+            min-height: 250px;
+        }
+        .chat-bubble {
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            max-width: 80%;
+            font-size: 0.875rem;
+        }
+        .chat-bubble.received {
+            background: white;
+            border-bottom-left-radius: 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .chat-bubble.sent {
+            background: var(--primary);
+            color: white;
+            border-bottom-right-radius: 0;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar glass-panel" style="border-radius: 0; border-top: none; border-left: none; border-right: none;">
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo">
+                <i class="fas fa-building"></i> PropManage
+            </a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                        <ul class="nav-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home-2.html" class="active">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="demo.html">Demo</a></li>
+                <li><a href="roi-calculator.html">ROI Calculator</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Premium Hero -->
+    <header class="premium-hero">
+        <div class="container">
+            <div class="grid-2 align-center">
+                <div data-aos="fade-right">
+                    <span class="subheading">Enterprise Grade SaaS</span>
+                    <h1 class="mb-3">Scale Your Portfolio Without Scaling Headcount</h1>
+                    <p class="mb-4">Advanced automation, deep financial reporting, and seamless tenant communications designed for ambitious property management firms.</p>
+                    <div class="d-flex align-center" style="gap: 2rem;">
+                        <a href="register.html" class="btn btn-primary">Get Started <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="hero-video-btn">
+                            <div class="play-icon"><i class="fas fa-play"></i></div>
+                            Watch Demo
+                        </a>
+                    </div>
+                </div>
+                <div data-aos="fade-left" class="floating">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Advanced Dashboard" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-xl);">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 2: ROI Calculator -->
+    <section class="py-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Value Driven</span>
+                <h2>Calculate Your ROI</h2>
+                <p>See how much time and money you save with PropManage.</p>
+            </div>
+            
+            <div class="roi-calculator" data-aos="zoom-in">
+                <div class="grid-2">
+                    <div>
+                        <div class="roi-input-group">
+                            <label class="form-label">Number of Properties Managed: <span id="propCountVal" style="color: var(--primary); font-weight: 600;">50</span></label>
+                            <input type="range" id="propCount" class="roi-slider" min="1" max="500" value="50">
+                        </div>
+                        <div class="roi-input-group">
+                            <label class="form-label">Average Monthly Rent ($): <span id="rentVal" style="color: var(--primary); font-weight: 600;">1500</span></label>
+                            <input type="range" id="rentAmount" class="roi-slider" min="500" max="5000" value="1500" step="100">
+                        </div>
+                        <div class="roi-input-group">
+                            <label class="form-label">Current Vacancy Rate (%): <span id="vacancyVal" style="color: var(--primary); font-weight: 600;">8</span></label>
+                            <input type="range" id="vacancyRate" class="roi-slider" min="1" max="20" value="8">
+                        </div>
+                    </div>
+                    <div class="roi-result">
+                        <p style="color: var(--text-dark); margin-bottom: 0;">Estimated Annual Savings</p>
+                        <h3 id="savingsResult">$12,450</h3>
+                        <p style="font-size: 0.875rem;">Based on automated rent collection, reduced vacancies, and lower administrative overhead.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Advanced SaaS Features (4 Cards) -->
+    <section class="py-section bg-main">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Powerful Automation</span>
+                <h2>Advanced Enterprise Features</h2>
+            </div>
+            
+            <div class="grid-4">
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon"><i class="fas fa-sitemap"></i></div>
+                    <h4>Multi-Entity Support</h4>
+                    <p>Manage multiple LLCs and trust accounts from a single unified login.</p>
+                </div>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h4>Automated CAM Reconciliations</h4>
+                    <p>Complex common area maintenance calculations handled instantly.</p>
+                </div>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon"><i class="fas fa-plug"></i></div>
+                    <h4>API Integrations</h4>
+                    <p>Connect seamlessly with QuickBooks, Xero, and major banking partners.</p>
+                </div>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon"><i class="fas fa-user-shield"></i></div>
+                    <h4>Role-Based Access</h4>
+                    <p>Granular permissions for property managers, leasing agents, and maintenance staff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Tenant Communication Showcase -->
+    <section class="py-section">
+        <div class="container">
+            <div class="grid-2 align-center">
+                <div data-aos="fade-right">
+                    <div class="communication-mockup">
+                        <div class="chat-header">
+                            <i class="fas fa-building"></i> PropManage Support
+                        </div>
+                        <div class="chat-body">
+                            <div class="chat-bubble received">
+                                Hi, the AC in unit 4B is making a strange noise.
+                            </div>
+                            <div class="chat-bubble sent">
+                                Thanks for letting us know, Sarah. We've created a work order.
+                            </div>
+                            <div class="chat-bubble sent">
+                                A technician from cool-breeze HVAC will be there tomorrow at 10 AM.
+                            </div>
+                            <div class="chat-bubble received">
+                                Great, thanks!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-left" style="padding-left: 2rem;">
+                    <span class="subheading">Unified Inbox</span>
+                    <h2 class="mb-3">Never Miss a Tenant Message</h2>
+                    <p class="mb-4">Centralize all SMS, email, and portal messages into one clean inbox. Broadcast announcements to entire buildings with one click.</p>
+                    <ul style="list-style: none; margin-bottom: 2rem;">
+                        <li class="mb-2"><i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 10px;"></i> Two-way SMS texting</li>
+                        <li class="mb-2"><i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 10px;"></i> Automated rent reminders</li>
+                        <li class="mb-2"><i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 10px;"></i> Bulk building announcements</li>
+                    </ul>
+                    <a href="features.html" class="btn btn-outline">Explore Inbox Features</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Financial Reporting Analytics Preview -->
+    <section class="py-section bg-main">
+        <div class="container">
+            <div class="grid-2 align-center">
+                <div data-aos="fade-right" style="padding-right: 2rem;">
+                    <span class="subheading">Deep Insights</span>
+                    <h2 class="mb-3">Bank-Grade Financial Reporting</h2>
+                    <p class="mb-4">Generate comprehensive financial packets for owners with a single click. Keep your trust accounts perfectly balanced.</p>
+                    <div class="mb-3">
+                        <h4 class="mb-1">Automated Bank Sync</h4>
+                        <p style="font-size: 0.9rem;">Reconcile transactions daily with direct bank feeds.</p>
+                    </div>
+                    <div class="mb-3">
+                        <h4 class="mb-1">Owner Portals</h4>
+                        <p style="font-size: 0.9rem;">Give investors real-time access to their performance metrics.</p>
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Financial Analytics" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: Enterprise Property Portfolio Management -->
+    <section class="py-section" style="background: var(--primary); color: white;">
+        <div class="container text-center" data-aos="zoom-in">
+            <h2 style="color: white; margin-bottom: 1.5rem;">Ready to Upgrade Your Portfolio Operations?</h2>
+            <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 3rem;">Join thousands of enterprise property managers who have scaled their business using PropManage.</p>
+            <div class="d-flex justify-center" style="gap: 1rem;">
+                <a href="contact.html" class="btn" style="background: white; color: var(--primary);">Schedule Custom Demo</a>
+                <a href="register.html" class="btn btn-outline" style="border-color: white; color: white;">Start Free Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo mb-3"><i class="fas fa-building"></i> PropManage</a>
+                    <p>The all-in-one SaaS platform designed to help landlords and property managers scale their portfolios with ease and efficiency.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home 1</a></li>
+                        <li><a href="home-2.html" class="active">Home 2</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="features.html">Tenant Portal</a></li>
+                        <li><a href="features.html">Rent Collection</a></li>
+                        <li><a href="features.html">Maintenance</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for property management tips and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary" style="padding: 0.75rem;"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PropManage SaaS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // ROI Calculator Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const propCount = document.getElementById('propCount');
+            const rentAmount = document.getElementById('rentAmount');
+            const vacancyRate = document.getElementById('vacancyRate');
+            
+            const propCountVal = document.getElementById('propCountVal');
+            const rentVal = document.getElementById('rentVal');
+            const vacancyVal = document.getElementById('vacancyVal');
+            
+            const savingsResult = document.getElementById('savingsResult');
+            
+            function calculateROI() {
+                const props = parseInt(propCount.value);
+                const rent = parseInt(rentAmount.value);
+                const vacancy = parseInt(vacancyRate.value);
+                
+                propCountVal.textContent = props;
+                rentVal.textContent = rent;
+                vacancyVal.textContent = vacancy;
+                
+                // Simple hypothetical formula for savings
+                const monthlyRevenue = props * rent;
+                const oldVacancyLoss = monthlyRevenue * (vacancy / 100);
+                const newVacancyLoss = monthlyRevenue * ((vacancy - 3) > 0 ? (vacancy - 3) / 100 : 0); // Assuming 3% improvement
+                const adminSavingsPerProp = 25; // $25 saved per property per month
+                
+                const annualSavings = ((oldVacancyLoss - newVacancyLoss) + (props * adminSavingsPerProp)) * 12;
+                
+                savingsResult.textContent = '$' + annualSavings.toLocaleString(undefined, { maximumFractionDigits: 0 });
+            }
+            
+            propCount.addEventListener('input', calculateROI);
+            rentAmount.addEventListener('input', calculateROI);
+            vacancyRate.addEventListener('input', calculateROI);
+            
+            calculateROI();
+        });
+    </script>
+</body>
+</html>
+

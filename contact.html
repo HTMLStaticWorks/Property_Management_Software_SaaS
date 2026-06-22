@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PropManage SaaS</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+
+    <style>
+        .contact-hero {
+            padding: 10rem 0 5rem;
+            background: var(--bg-card);
+            text-align: center;
+        }
+        
+        .contact-method-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .contact-method-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .contact-form-wrapper {
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            padding: 4rem;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .location-card {
+            background: var(--bg-main);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .location-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .location-info {
+            padding: 2rem;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 500px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar glass-panel" style="border-radius: 0; border-top: none; border-left: none; border-right: none;">
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo"><i class="fas fa-building"></i> PropManage</a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                        <ul class="nav-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home-2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="demo.html">Demo</a></li>
+                <li><a href="roi-calculator.html">ROI Calculator</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Contact Hero -->
+    <header class="contact-hero bg-pattern">
+        <div class="container" data-aos="zoom-in">
+            <span class="subheading">Get In Touch</span>
+            <h1 class="mb-3">We'd Love to Hear From You</h1>
+            <p style="max-width: 600px; margin: 0 auto;">Whether you have a question about features, trials, pricing, or anything else, our team is ready to answer all your questions.</p>
+        </div>
+    </header>
+
+    <!-- SECTION 2: Contact Methods (4 Cards) -->
+    <section class="py-section" style="margin-top: -3rem; position: relative; z-index: 2;">
+        <div class="container">
+            <div class="grid-4">
+                <div class="contact-method-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-comments fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Chat to Sales</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">Speak to our friendly team.</p>
+                    <a href="mailto:sales@propmanage.com" style="font-weight: 500;">sales@propmanage.com</a>
+                </div>
+                <div class="contact-method-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-headset fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Support</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">We're here to help.</p>
+                    <a href="mailto:support@propmanage.com" style="font-weight: 500;">support@propmanage.com</a>
+                </div>
+                <div class="contact-method-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-map-marker-alt fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Visit Us</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">Visit our office HQ.</p>
+                    <a href="#locations" style="font-weight: 500;">View Locations</a>
+                </div>
+                <div class="contact-method-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-phone-alt fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h4>Call Us</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">Mon-Fri from 8am to 5pm.</p>
+                    <a href="tel:+18001234567" style="font-weight: 500;">+1 (800) 123-4567</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Interactive Contact Form -->
+    <section class="py-section bg-main">
+        <div class="container">
+            <div class="grid-2 align-center">
+                <div data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Contact Us" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                </div>
+                <div data-aos="fade-left">
+                    <div class="contact-form-wrapper">
+                        <h2 class="mb-4">Send us a message</h2>
+                        <form action="#">
+                            <div class="grid-2 mb-3" style="gap: 1rem;">
+                                <div class="form-group mb-0">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" placeholder="John" required>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" placeholder="Doe" required>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Portfolio Size</label>
+                                <select class="form-control" required>
+                                    <option value="" disabled selected>Select number of units</option>
+                                    <option value="1-50">1 - 50 Units</option>
+                                    <option value="51-200">51 - 200 Units</option>
+                                    <option value="200+">200+ Units</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="4" placeholder="How can we help you?" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Office Locations -->
+    <section id="locations" class="py-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Global Presence</span>
+                <h2>Our Offices</h2>
+            </div>
+            
+            <div class="grid-2">
+                <div class="location-card" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1531234799389-dcb7651eb0a2?auto=format&fit=crop&w=800&q=80" alt="Austin HQ" class="location-img">
+                    <div class="location-info">
+                        <h3 class="mb-2">Austin, TX (HQ)</h3>
+                        <p class="text-muted mb-3"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 100 Congress Ave, Suite 2000<br>Austin, TX 78701</p>
+                        <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem;">Get Directions</a>
+                    </div>
+                </div>
+                <div class="location-card" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80" alt="London Office" class="location-img">
+                    <div class="location-info">
+                        <h3 class="mb-2">London, UK</h3>
+                        <p class="text-muted mb-3"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 1 Canada Square, Canary Wharf<br>London E14 5AB</p>
+                        <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem;">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Map Integration Area -->
+    <section class="py-section bg-main">
+        <div class="container" data-aos="fade-up">
+            <div class="text-center mb-4">
+                <h2>Find Us on the Map</h2>
+            </div>
+            <div class="map-container">
+                <!-- Using a placeholder iframe for the map. For a real app, use Google Maps iframe -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110113.88279440669!2d-97.82226294747063!3d30.307462417757917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b599a0cc032f%3A0x5d9b464bd469d57a!2sAustin%2C%20TX!5e0!3m2!1sen!2sus!4v1689100000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo mb-3"><i class="fas fa-building"></i> PropManage</a>
+                    <p>The all-in-one SaaS platform designed to help landlords and property managers scale their portfolios with ease and efficiency.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home 1</a></li>
+                        <li><a href="home-2.html">Home 2</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="features.html">Tenant Portal</a></li>
+                        <li><a href="features.html">Rent Collection</a></li>
+                        <li><a href="features.html">Maintenance</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for property management tips and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary" style="padding: 0.75rem;"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PropManage SaaS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

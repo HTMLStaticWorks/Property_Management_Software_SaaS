@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - PropManage SaaS</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+
+    <style>
+        .features-hero {
+            padding: 10rem 0 6rem;
+            text-align: center;
+            background: var(--bg-card);
+            position: relative;
+            overflow: hidden;
+        }
+        .features-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 50%);
+            z-index: 0;
+            opacity: 0.5;
+        }
+        .hero-content-inner {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-showcase {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-showcase::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 30%;
+            background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.05));
+            z-index: 0;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        .feature-list .icon {
+            width: 30px;
+            height: 30px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar glass-panel" style="border-radius: 0; border-top: none; border-left: none; border-right: none;">
+        <div class="container d-flex justify-between align-center">
+            <a href="index.html" class="logo"><i class="fas fa-building"></i> PropManage</a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                        <ul class="nav-links">
+                <li><a href="index.html">Home 1</a></li>
+                <li><a href="home-2.html">Home 2</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html" class="active">Features</a></li>
+                <li><a href="demo.html">Demo</a></li>
+                <li><a href="roi-calculator.html">ROI Calculator</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Features Hero -->
+    <header class="features-hero">
+        <div class="container hero-content-inner" data-aos="fade-up">
+            <span class="subheading">Platform Capabilities</span>
+            <h1 class="mb-3">Everything You Need to Scale</h1>
+            <p style="max-width: 600px; margin: 0 auto 2rem;">Discover the powerful tools that make PropManage the leading choice for modern property management professionals.</p>
+            <a href="#tenant-management" class="btn btn-primary">Explore Features <i class="fas fa-arrow-down"></i></a>
+        </div>
+    </header>
+
+    <!-- SECTION 2: Tenant Management (4 Cards) -->
+    <section id="tenant-management" class="py-section bg-main">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Tenant Experience</span>
+                <h2>Complete Tenant Management</h2>
+            </div>
+            
+            <div class="grid-4">
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon"><i class="fas fa-user-check"></i></div>
+                    <h4>Screening & Background</h4>
+                    <p>Run instant credit, criminal, and eviction reports directly through the platform.</p>
+                </div>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i class="fas fa-file-signature"></i></div>
+                    <h4>Digital Leasing</h4>
+                    <p>Create templates, autofill tenant data, and collect e-signatures in minutes.</p>
+                </div>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h4>Tenant App</h4>
+                    <p>Provide a dedicated mobile portal for payments, requests, and announcements.</p>
+                </div>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon"><i class="fas fa-comments"></i></div>
+                    <h4>Unified Inbox</h4>
+                    <p>Communicate via email or SMS. Keep all conversation history in one place.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Rent Tracking System -->
+    <section class="py-section">
+        <div class="container">
+            <div class="feature-showcase">
+                <div class="grid-2 align-center">
+                    <div data-aos="fade-right" style="position: relative; z-index: 1;">
+                        <span class="subheading">Financials</span>
+                        <h2 class="mb-3">Automated Rent Tracking System</h2>
+                        <p class="mb-4">Never chase a rent check again. Our automated system handles the entire collection cycle from invoicing to direct deposit.</p>
+                        
+                        <ul class="feature-list">
+                            <li>
+                                <div class="icon"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <h4 class="mb-1">Autopay Enrollment</h4>
+                                    <p class="text-muted">Tenants can set and forget their payments via ACH or Credit Card.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <h4 class="mb-1">Automated Late Fees</h4>
+                                    <p class="text-muted">Set your rules once, and the system automatically calculates and applies late fees.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <h4 class="mb-1">Next-Day Funding</h4>
+                                    <p class="text-muted">Get your money faster with expedited payout options.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-aos="fade-left" class="text-center" style="position: relative; z-index: 1;">
+                        <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=600&q=80" alt="Rent Tracking" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Maintenance Management System -->
+    <section class="py-section bg-main">
+        <div class="container">
+            <div class="grid-2 align-center">
+                <div data-aos="fade-right">
+                    <div class="grid-2" style="gap: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1581141849291-1125c7b692b5?auto=format&fit=crop&w=400&q=80" alt="Maintenance 1" style="border-radius: var(--radius-lg); margin-top: 2rem;">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=400&q=80" alt="Maintenance 2" style="border-radius: var(--radius-lg);">
+                    </div>
+                </div>
+                <div data-aos="fade-left" style="padding-left: 2rem;">
+                    <span class="subheading">Operations</span>
+                    <h2 class="mb-3">Streamlined Maintenance Management</h2>
+                    <p class="mb-4">Take the headache out of property repairs. Coordinate between tenants, vendors, and property owners without leaving the app.</p>
+                    
+                    <div class="glass-panel mb-3" style="padding: 1.5rem;">
+                        <h4 class="mb-1"><i class="fas fa-camera" style="color: var(--primary); margin-right: 10px;"></i> Photo & Video Uploads</h4>
+                        <p style="margin:0; font-size: 0.9rem;">Tenants can attach media to requests, helping you accurately diagnose issues.</p>
+                    </div>
+                    <div class="glass-panel mb-3" style="padding: 1.5rem;">
+                        <h4 class="mb-1"><i class="fas fa-truck" style="color: var(--primary); margin-right: 10px;"></i> Vendor Dispatch</h4>
+                        <p style="margin:0; font-size: 0.9rem;">Send work orders directly to your preferred contractors with one click.</p>
+                    </div>
+                    <div class="glass-panel" style="padding: 1.5rem;">
+                        <h4 class="mb-1"><i class="fas fa-receipt" style="color: var(--primary); margin-right: 10px;"></i> Invoice Processing</h4>
+                        <p style="margin:0; font-size: 0.9rem;">Vendors upload bills directly to the work order for easy approval and payment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Financial Reporting Features -->
+    <section class="py-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="subheading">Analytics</span>
+                <h2>Bank-Grade Financial Reporting</h2>
+                <p>Gain deep insights into your portfolio's performance with customizable reports.</p>
+            </div>
+            
+            <div class="glass-panel" style="padding: 3rem; background: linear-gradient(135deg, var(--bg-card) 0%, var(--primary-light) 100%);">
+                <div class="grid-3" data-aos="zoom-in">
+                    <div class="text-center">
+                        <i class="fas fa-chart-line fa-3x mb-3" style="color: var(--primary);"></i>
+                        <h4>Profit & Loss</h4>
+                        <p style="font-size: 0.9rem;">Generate detailed P&L statements per property, portfolio, or owner.</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-file-invoice fa-3x mb-3" style="color: var(--primary);"></i>
+                        <h4>Tax Preparation</h4>
+                        <p style="font-size: 0.9rem;">Export Schedule E reports and 1099s directly to your accountant.</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-university fa-3x mb-3" style="color: var(--primary);"></i>
+                        <h4>Bank Reconciliation</h4>
+                        <p style="font-size: 0.9rem;">Sync your bank accounts to automatically match transactions.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <a href="register.html" class="btn btn-primary">Try It Free for 14 Days</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo mb-3"><i class="fas fa-building"></i> PropManage</a>
+                    <p>The all-in-one SaaS platform designed to help landlords and property managers scale their portfolios with ease and efficiency.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home 1</a></li>
+                        <li><a href="home-2.html">Home 2</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="features.html" class="active">Tenant Portal</a></li>
+                        <li><a href="features.html" class="active">Rent Collection</a></li>
+                        <li><a href="features.html" class="active">Maintenance</a></li>
+                        <li><a href="pricing.html">Pricing Plans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for property management tips and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary" style="padding: 0.75rem;"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PropManage SaaS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
