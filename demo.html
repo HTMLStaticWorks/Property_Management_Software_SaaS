@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Center - PropManage SaaS</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
@@ -13,10 +13,12 @@
 
     <style>
         .demo-hero {
-            padding: 10rem 0 6rem;
+            padding: 13rem 0 8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
             text-align: center;
-            background: linear-gradient(to bottom, var(--primary-light), var(--bg-main));
         }
+        .demo-hero h1, .demo-hero p, .demo-hero .subheading { color: white; }
         
         .interactive-walkthrough {
             background: var(--bg-card);
@@ -25,7 +27,7 @@
             box-shadow: var(--shadow-xl);
             position: relative;
             z-index: 2;
-            margin-top: -3rem;
+            margin-top: 3rem;
         }
         .walkthrough-step {
             display: flex;
@@ -90,6 +92,7 @@
             </ul>
             <div class="nav-actions">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle RTL" style="margin-left: 10px;"><i class="fas fa-exchange-alt"></i></button>
                 <a href="login.html" class="btn btn-primary">Login</a>
             </div>
         </div>
@@ -121,7 +124,7 @@
                         <p>Upload your property data in bulk or sync directly from your existing software. Our wizard makes it easy to set up buildings, units, and amenities.</p>
                     </div>
                     <div style="flex: 1;">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Onboarding" style="border-radius: var(--radius-md);">
+                        <img src="assets/images/Onboard%20Properties.png" alt="Onboarding" style="border-radius: var(--radius-md); max-width: 100%; display: block;">
                     </div>
                 </div>
                 
@@ -132,7 +135,7 @@
                         <p>Send automated email invitations to your tenants to join their dedicated portal. They can set up payment methods and sign leases instantly.</p>
                     </div>
                     <div style="flex: 1;">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" alt="Tenants" style="border-radius: var(--radius-md);">
+                        <img src="assets/images/Invite%20Tenants.png" alt="Tenants" style="border-radius: var(--radius-md); max-width: 100%; display: block;">
                     </div>
                 </div>
                 
@@ -143,7 +146,7 @@
                         <p>Set up your bank accounts for direct deposit. The system will automatically generate invoices, collect rent, and reconcile transactions.</p>
                     </div>
                     <div style="flex: 1;">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80" alt="Finances" style="border-radius: var(--radius-md);">
+                        <img src="assets/images/Automate%20Finances.png" alt="Finances" style="border-radius: var(--radius-md); max-width: 100%; display: block;">
                     </div>
                 </div>
             </div>
@@ -160,22 +163,22 @@
             
             <div class="grid-4">
                 <div class="card-3d" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);"><i class="fas fa-chart-line"></i></div>
+                    <div class="card-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success); margin: 0 auto 1.5rem auto;"><i class="fas fa-chart-line"></i></div>
                     <h4>Real-time Analytics</h4>
                     <p>Track rent collection, occupancy rates, and portfolio growth instantly.</p>
                 </div>
                 <div class="card-3d" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);"><i class="fas fa-bell"></i></div>
+                    <div class="card-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning); margin: 0 auto 1.5rem auto;"><i class="fas fa-bell"></i></div>
                     <h4>Smart Alerts</h4>
                     <p>Get notified about expiring leases and overdue payments.</p>
                 </div>
                 <div class="card-3d" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-icon" style="background: rgba(79, 70, 229, 0.1); color: var(--primary);"><i class="fas fa-tasks"></i></div>
+                    <div class="card-icon" style="background: rgba(79, 70, 229, 0.1); color: var(--primary); margin: 0 auto 1.5rem auto;"><i class="fas fa-tasks"></i></div>
                     <h4>Task Management</h4>
                     <p>Organize your day with integrated to-do lists and team assignments.</p>
                 </div>
                 <div class="card-3d" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);"><i class="fas fa-file-invoice"></i></div>
+                    <div class="card-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger); margin: 0 auto 1.5rem auto;"><i class="fas fa-file-invoice"></i></div>
                     <h4>Quick Actions</h4>
                     <p>Generate reports or send messages directly from the home screen.</p>
                 </div>
@@ -198,7 +201,7 @@
                     </ul>
                 </div>
                 <div data-aos="fade-left" class="demo-mockup">
-                    <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Tenant App">
+                    <img src="assets/images/A%20Seamless%20Tenant%20Experience.png" alt="Tenant App" style="width: 100%; display: block;">
                 </div>
             </div>
         </div>
@@ -209,7 +212,7 @@
         <div class="container">
             <div class="grid-2 align-center">
                 <div data-aos="fade-right" class="demo-mockup">
-                    <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=800&q=80" alt="Rent Collection">
+                    <img src="assets/images/Automated%20Rent%20Cycles.png" alt="Rent Collection" style="width: 100%; display: block;">
                 </div>
                 <div data-aos="fade-left" style="padding-left: 2rem;">
                     <span class="subheading">Financials</span>
@@ -228,21 +231,26 @@
                 <span class="subheading">Operations</span>
                 <h2>Maintenance Ticket Workflow</h2>
             </div>
-            <div class="grid-3">
+            <div class="grid-4">
                 <div class="text-center" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=400&q=80" alt="Submit" style="border-radius: var(--radius-md); margin-bottom: 1rem;">
+                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=400&q=80" alt="Submit" style="border-radius: var(--radius-md); margin-bottom: 1rem; width: 100%; height: 200px; object-fit: cover;">
                     <h4>1. Tenant Submits</h4>
                     <p class="text-muted" style="font-size: 0.9rem;">Photos and descriptions uploaded via app.</p>
                 </div>
                 <div class="text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=400&q=80" alt="Dispatch" style="border-radius: var(--radius-md); margin-bottom: 1rem;">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=400&q=80" alt="Dispatch" style="border-radius: var(--radius-md); margin-bottom: 1rem; width: 100%; height: 200px; object-fit: cover;">
                     <h4>2. Vendor Dispatched</h4>
                     <p class="text-muted" style="font-size: 0.9rem;">Work order sent automatically to contractor.</p>
                 </div>
                 <div class="text-center" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=80" alt="Resolution" style="border-radius: var(--radius-md); margin-bottom: 1rem;">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=80" alt="Resolution" style="border-radius: var(--radius-md); margin-bottom: 1rem; width: 100%; height: 200px; object-fit: cover;">
                     <h4>3. Resolution & Billing</h4>
                     <p class="text-muted" style="font-size: 0.9rem;">Invoice paid and ledger updated.</p>
+                </div>
+                <div class="text-center" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80" alt="Review" style="border-radius: var(--radius-md); margin-bottom: 1rem; width: 100%; height: 200px; object-fit: cover;">
+                    <h4>4. Review & Rating</h4>
+                    <p class="text-muted" style="font-size: 0.9rem;">Tenant provides feedback on the repair.</p>
                 </div>
             </div>
         </div>
@@ -262,7 +270,7 @@
                     </div>
                 </div>
                 <div data-aos="fade-left" class="demo-mockup">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Reports">
+                    <img src="assets/images/Reporting.png" alt="Reports" style="width: 100%; display: block;">
                 </div>
             </div>
         </div>
@@ -345,4 +353,5 @@
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 

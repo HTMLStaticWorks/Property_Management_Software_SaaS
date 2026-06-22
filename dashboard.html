@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - PropManage SaaS</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
     <link rel="stylesheet" href="assets/css/rtl.css">
@@ -239,7 +239,10 @@
         #mobile-sidebar-toggle { display: none; }
         #sidebar-close { display: none; background: none; border: none; color: var(--text-muted); font-size: 1.25rem; cursor: pointer; }
         
-        @media (max-width: 992px) {
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+        
+        @media (max-width: 1024px) {
             .sidebar {
                 position: fixed;
                 top: 0; left: -260px;
@@ -248,9 +251,36 @@
             }
             .sidebar.active { left: 0; }
             .sidebar.collapsed { width: 260px; } /* Disable collapse on mobile */
-            #sidebar-toggle { display: none; }
             #mobile-sidebar-toggle { display: block; }
             #sidebar-close { display: block; }
+        }
+        @media (max-width: 768px) {
+            .content-area {
+                padding: 1rem !important;
+                overflow-x: hidden;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            .panel {
+                width: 100% !important;
+                box-sizing: border-box !important;
+                min-width: 0 !important;
+                overflow: hidden !important;
+            }
+            .panel-header {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                justify-content: center !important;
+                gap: 1rem !important;
+            }
+            .chart-container {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
         }
     </style>
 </head>
@@ -266,17 +296,34 @@
         </div>
         
         <ul class="sidebar-menu">
-            <li><a href="#" class="active"><i class="fas fa-home"></i> <span>Overview</span></a></li>
-            <li><a href="#"><i class="fas fa-city"></i> <span>Properties</span></a></li>
-            <li><a href="#"><i class="fas fa-users"></i> <span>Tenants</span></a></li>
-            <li><a href="#"><i class="fas fa-file-invoice-dollar"></i> <span>Financials</span></a></li>
-            <li><a href="#"><i class="fas fa-tools"></i> <span>Maintenance</span></a></li>
-            <li><a href="#"><i class="fas fa-chart-pie"></i> <span>Reports</span></a></li>
-            <li><a href="#"><i class="fas fa-envelope"></i> <span>Messages</span></a></li>
-            <li><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="#" class="tab-link active" data-tab="overview"><i class="fas fa-home"></i> <span>Overview</span></a></li>
+            <li><a href="#" class="tab-link" data-tab="properties"><i class="fas fa-city"></i> <span>Properties</span></a></li>
+            <li><a href="#" class="tab-link" data-tab="tenants"><i class="fas fa-users"></i> <span>Tenants</span></a></li>
+            <li><a href="#" class="tab-link" data-tab="financials"><i class="fas fa-file-invoice-dollar"></i> <span>Financials</span></a></li>
+            <li><a href="#" class="tab-link" data-tab="maintenance"><i class="fas fa-tools"></i> <span>Maintenance</span></a></li>
+            <li><a href="#" class="tab-link" data-tab="reports"><i class="fas fa-chart-pie"></i> <span>Reports</span></a></li>
+            <li><a href="#" class="tab-link" data-tab="messages"><i class="fas fa-envelope"></i> <span>Messages</span></a></li>
+            <li><a href="#" class="tab-link" data-tab="settings"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="#"><i class="fas fa-bell"></i> <span style="display: flex; justify-content: space-between; width: 100%; align-items: center;">Notifications <span class="badge" style="position: static; width: auto; height: auto; padding: 2px 6px;">3</span></span></a></li>
         </ul>
         
         <div class="sidebar-footer">
+            <!-- Profile -->
+            <div class="user-profile mb-3" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; border-radius: var(--radius-md); background: rgba(0,0,0,0.03);">
+                <div class="user-avatar" style="width: 35px; height: 35px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0;">JD</div>
+                <div class="user-profile-text" style="display: flex; flex-direction: column;">
+                    <span style="font-weight: 500; font-size: 0.875rem;">John Doe</span>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Admin</span>
+                </div>
+            </div>
+            
+            <!-- Theme & RTL Toggles -->
+            <div class="d-flex mb-3" style="gap: 1rem; justify-content: center;">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode" style="background: rgba(0,0,0,0.05); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;"><i class="fas fa-moon"></i></button>
+                <button id="rtl-toggle" class="icon-btn" aria-label="Toggle RTL" style="background: rgba(0,0,0,0.05); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;"><i class="fas fa-exchange-alt"></i></button>
+            </div>
+
+            <!-- Logout -->
             <a href="index.html" class="logout-btn">
                 <i class="fas fa-sign-out-alt"></i> <span>Log Out</span>
             </a>
@@ -289,31 +336,17 @@
         <!-- Topbar -->
         <header class="topbar">
             <div class="d-flex align-center gap-1">
-                <button id="sidebar-toggle" class="icon-btn"><i class="fas fa-bars"></i></button>
                 <button id="mobile-sidebar-toggle" class="icon-btn"><i class="fas fa-bars"></i></button>
-                <h3 style="margin: 0; margin-left: 1rem; font-size: 1.25rem;">Dashboard</h3>
+                <h3 style="margin: 0; margin-left: 1rem; font-size: 1.25rem;">Welcome</h3>
             </div>
             
-            <div class="topbar-right">
-                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
-                <button class="icon-btn">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge">3</span>
-                </button>
-                <div class="user-profile">
-                    <div class="user-avatar">JD</div>
-                    <div style="display: flex; flex-direction: column;">
-                        <span style="font-weight: 500; font-size: 0.875rem;">John Doe</span>
-                        <span style="font-size: 0.75rem; color: var(--text-muted);">Admin</span>
-                    </div>
-                    <i class="fas fa-chevron-down" style="font-size: 0.75rem; color: var(--text-muted); margin-left: 0.5rem;"></i>
-                </div>
-            </div>
+            <!-- Items moved to sidebar -->
         </header>
         
         <!-- Content Area -->
         <div class="content-area">
             
+            <div id="overview" class="tab-pane active">
             <!-- 4 Stat Cards -->
             <div class="grid-4 mb-4">
                 <div class="stat-card">
@@ -462,6 +495,462 @@
                 </div>
                 
             </div>
+            </div>
+
+            <!-- Properties Tab -->
+            <div id="properties" class="tab-pane">
+                <!-- Section 1: Stats -->
+                <div class="grid-4 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Total Properties</h4><h2>142</h2></div>
+                        <div class="stat-icon" style="background: rgba(79, 70, 229, 0.1); color: var(--primary);"><i class="fas fa-building"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Available</h4><h2>15</h2></div>
+                        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);"><i class="fas fa-check-circle"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Under Maintenance</h4><h2>4</h2></div>
+                        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);"><i class="fas fa-tools"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>New Listings</h4><h2>8</h2></div>
+                        <div class="stat-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);"><i class="fas fa-plus-circle"></i></div>
+                    </div>
+                </div>
+                
+                <!-- Section 2: Table -->
+                <div class="panel mb-4">
+                    <div class="panel-header">
+                        <h3 class="panel-title">Property List</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr><th>Property Name</th><th>Type</th><th>Occupancy</th><th>Status</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Sunset Apartments</td><td>Multi-Family</td><td>92%</td><td><span class="status-badge status-paid">Active</span></td></tr>
+                                <tr><td>Oakwood Townhomes</td><td>Residential</td><td>100%</td><td><span class="status-badge status-paid">Active</span></td></tr>
+                                <tr><td>Pinecrest Building</td><td>Commercial</td><td>85%</td><td><span class="status-badge status-pending">Renovation</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: 2-Column Info -->
+                <div class="grid-2 mb-4" style="grid-template-columns: 1fr 1fr;">
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Portfolio Distribution</h3>
+                        <div style="height: 150px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                            <span style="color: var(--text-muted);">Chart Representation</span>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Recent Inspections</h3>
+                        <ul class="activity-list">
+                            <li class="activity-item"><div class="activity-time">Today</div><p class="activity-text">Sunset Apartments - Passed</p></li>
+                            <li class="activity-item"><div class="activity-time">Yesterday</div><p class="activity-text">Oakwood Townhomes - Minor issues</p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Summary -->
+                <div class="panel">
+                    <h3 class="panel-title mb-3">Property Overview Notes</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Overall property portfolio is performing well with an average occupancy rate of 88%. Scheduled maintenance for Pinecrest Building is on track for completion next week.</p>
+                </div>
+            </div>
+
+            <!-- Tenants Tab -->
+            <div id="tenants" class="tab-pane">
+                <!-- Section 1: Stats -->
+                <div class="grid-4 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Total Tenants</h4><h2>315</h2></div>
+                        <div class="stat-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);"><i class="fas fa-users"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>New Leases</h4><h2>12</h2></div>
+                        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);"><i class="fas fa-file-signature"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Expiring Soon</h4><h2>24</h2></div>
+                        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);"><i class="fas fa-hourglass-half"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Move-outs</h4><h2>3</h2></div>
+                        <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);"><i class="fas fa-sign-out-alt"></i></div>
+                    </div>
+                </div>
+                
+                <!-- Section 2: Table -->
+                <div class="panel mb-4">
+                    <div class="panel-header">
+                        <h3 class="panel-title">Tenant Directory</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr><th>Tenant Name</th><th>Property</th><th>Lease End</th><th>Status</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Alice Smith</td><td>Sunset Apts #4B</td><td>Dec 2026</td><td><span class="status-badge status-paid">Active</span></td></tr>
+                                <tr><td>Bob Johnson</td><td>Oakwood #12</td><td>Oct 2026</td><td><span class="status-badge status-paid">Active</span></td></tr>
+                                <tr><td>Diana Evans</td><td>Maple Ridge #3A</td><td>Jul 2026</td><td><span class="status-badge status-warning">Expiring</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: 2-Column Info -->
+                <div class="grid-2 mb-4" style="grid-template-columns: 1fr 1fr;">
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Lease Renewals</h3>
+                        <div style="height: 150px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                            <span style="color: var(--text-muted);">Chart Representation</span>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Recent Requests</h3>
+                        <ul class="activity-list">
+                            <li class="activity-item"><div class="activity-time">2 hrs ago</div><p class="activity-text">Alice Smith - Requested lease extension</p></li>
+                            <li class="activity-item"><div class="activity-time">1 day ago</div><p class="activity-text">Bob Johnson - Updated contact info</p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Summary -->
+                <div class="panel">
+                    <h3 class="panel-title mb-3">Tenant Satisfaction</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Based on the latest survey, 92% of tenants are satisfied with their living arrangements and property management response times.</p>
+                </div>
+            </div>
+
+            <!-- Financials Tab -->
+            <div id="financials" class="tab-pane">
+                <!-- Section 1: Stats -->
+                <div class="grid-4 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Monthly Revenue</h4><h2>$84,500</h2></div>
+                        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);"><i class="fas fa-dollar-sign"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Pending Payments</h4><h2>$4,200</h2></div>
+                        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);"><i class="fas fa-clock"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Expenses</h4><h2>$12,300</h2></div>
+                        <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);"><i class="fas fa-file-invoice"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Net Profit</h4><h2>$72,200</h2></div>
+                        <div class="stat-icon" style="background: rgba(79, 70, 229, 0.1); color: var(--primary);"><i class="fas fa-chart-line"></i></div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Table -->
+                <div class="panel mb-4">
+                    <div class="panel-header">
+                        <h3 class="panel-title">Transaction History</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Oct 24</td><td>Rent Payment - A. Smith</td><td>Income</td><td style="color: var(--success);">+$1,450</td></tr>
+                                <tr><td>Oct 23</td><td>Plumbing Repair</td><td>Maintenance</td><td style="color: var(--danger);">-$350</td></tr>
+                                <tr><td>Oct 22</td><td>Rent Payment - B. Johnson</td><td>Income</td><td style="color: var(--success);">+$2,100</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: 2-Column Info -->
+                <div class="grid-2 mb-4" style="grid-template-columns: 1fr 1fr;">
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Income vs Expenses</h3>
+                        <div style="height: 150px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                            <span style="color: var(--text-muted);">Chart Representation</span>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Upcoming Bills</h3>
+                        <ul class="activity-list">
+                            <li class="activity-item"><div class="activity-time">Due in 3 days</div><p class="activity-text">Property Insurance - $1,200</p></li>
+                            <li class="activity-item"><div class="activity-time">Due in 5 days</div><p class="activity-text">Utility Bills (Comm. Areas) - $450</p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Summary -->
+                <div class="panel">
+                    <h3 class="panel-title mb-3">Financial Overview</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Revenues are up 12% compared to the previous quarter. Operating expenses remain stable.</p>
+                </div>
+            </div>
+
+            <!-- Maintenance Tab -->
+            <div id="maintenance" class="tab-pane">
+                <!-- Section 1: Stats -->
+                <div class="grid-4 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Total Requests</h4><h2>48</h2></div>
+                        <div class="stat-icon" style="background: rgba(79, 70, 229, 0.1); color: var(--primary);"><i class="fas fa-tools"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Open Requests</h4><h2>12</h2></div>
+                        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);"><i class="fas fa-exclamation-circle"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>In Progress</h4><h2>8</h2></div>
+                        <div class="stat-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);"><i class="fas fa-spinner"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Completed</h4><h2>28</h2></div>
+                        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);"><i class="fas fa-check-double"></i></div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Table -->
+                <div class="panel mb-4">
+                    <div class="panel-header">
+                        <h3 class="panel-title">Active Maintenance Requests</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr><th>Ticket ID</th><th>Property</th><th>Issue</th><th>Priority</th><th>Status</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>#REQ-092</td><td>Sunset Apts #2A</td><td>HVAC Not cooling</td><td>High</td><td><span class="status-badge status-pending">Open</span></td></tr>
+                                <tr><td>#REQ-091</td><td>Oakwood #4</td><td>Leaking faucet</td><td>Low</td><td><span class="status-badge status-warning">In Progress</span></td></tr>
+                                <tr><td>#REQ-089</td><td>Pinecrest #1</td><td>Broken lock</td><td>High</td><td><span class="status-badge status-paid">Resolved</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: 2-Column Info -->
+                <div class="grid-2 mb-4" style="grid-template-columns: 1fr 1fr;">
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Tickets by Category</h3>
+                        <div style="height: 150px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                            <span style="color: var(--text-muted);">Chart Representation</span>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Vendor Updates</h3>
+                        <ul class="activity-list">
+                            <li class="activity-item"><div class="activity-time">1 hr ago</div><p class="activity-text">ABC Plumbing assigned to #REQ-091</p></li>
+                            <li class="activity-item"><div class="activity-time">4 hrs ago</div><p class="activity-text">HVAC Pros en route to Sunset Apts</p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Summary -->
+                <div class="panel">
+                    <h3 class="panel-title mb-3">Maintenance Efficiency</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Average resolution time for priority requests is currently 4.2 hours, exceeding our target of 6 hours.</p>
+                </div>
+            </div>
+
+            <!-- Reports Tab -->
+            <div id="reports" class="tab-pane">
+                <!-- Section 1: Stats -->
+                <div class="grid-4 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Financial Reports</h4><h2>15</h2></div>
+                        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);"><i class="fas fa-file-invoice-dollar"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Tax Documents</h4><h2>8</h2></div>
+                        <div class="stat-icon" style="background: rgba(79, 70, 229, 0.1); color: var(--primary);"><i class="fas fa-file-alt"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Property Analytics</h4><h2>24</h2></div>
+                        <div class="stat-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);"><i class="fas fa-chart-bar"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Tenant Surveys</h4><h2>12</h2></div>
+                        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);"><i class="fas fa-clipboard-list"></i></div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Table -->
+                <div class="panel mb-4">
+                    <div class="panel-header">
+                        <h3 class="panel-title">Generated Reports</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr><th>Report Name</th><th>Date Generated</th><th>Format</th><th>Action</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Q3 Financial Summary</td><td>Oct 01, 2026</td><td>PDF</td><td><a href="#" style="color: var(--primary);">Download</a></td></tr>
+                                <tr><td>September Rent Roll</td><td>Oct 01, 2026</td><td>Excel</td><td><a href="#" style="color: var(--primary);">Download</a></td></tr>
+                                <tr><td>Annual Maintenance Cost</td><td>Sep 15, 2026</td><td>PDF</td><td><a href="#" style="color: var(--primary);">Download</a></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: 2-Column Info -->
+                <div class="grid-2 mb-4" style="grid-template-columns: 1fr 1fr;">
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Custom Report Builder</h3>
+                        <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">Select metrics and date ranges to generate a custom analytical report.</p>
+                        <button class="btn btn-primary">Build Report</button>
+                    </div>
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Scheduled Reports</h3>
+                        <ul class="activity-list">
+                            <li class="activity-item"><div class="activity-time">Monthly</div><p class="activity-text">Owner Disbursement Statements</p></li>
+                            <li class="activity-item"><div class="activity-time">Weekly</div><p class="activity-text">Maintenance Status Digest</p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Summary -->
+                <div class="panel">
+                    <h3 class="panel-title mb-3">Storage Usage</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">1.2 GB of 5.0 GB used for report storage.</p>
+                </div>
+            </div>
+
+            <!-- Messages Tab -->
+            <div id="messages" class="tab-pane">
+                <!-- Section 1: Stats -->
+                <div class="grid-4 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Unread Messages</h4><h2>5</h2></div>
+                        <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);"><i class="fas fa-envelope"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Total Conversations</h4><h2>124</h2></div>
+                        <div class="stat-icon" style="background: rgba(79, 70, 229, 0.1); color: var(--primary);"><i class="fas fa-comments"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Automated Replies</h4><h2>45</h2></div>
+                        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);"><i class="fas fa-robot"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Sent Broadcasts</h4><h2>8</h2></div>
+                        <div class="stat-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);"><i class="fas fa-bullhorn"></i></div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Table -->
+                <div class="panel mb-4">
+                    <div class="panel-header">
+                        <h3 class="panel-title">Recent Conversations</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr><th>Contact</th><th>Subject</th><th>Last Message</th><th>Status</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Alice Smith</td><td>Lease Question</td><td>"Can I extend by 6 months?"</td><td><span class="status-badge status-danger" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);">Unread</span></td></tr>
+                                <tr><td>Bob Johnson</td><td>Parking Spot</td><td>"Thanks for the info!"</td><td><span class="status-badge status-paid">Read</span></td></tr>
+                                <tr><td>HVAC Pros</td><td>Invoice #928</td><td>"Attached is the final invoice."</td><td><span class="status-badge status-paid">Read</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: 2-Column Info -->
+                <div class="grid-2 mb-4" style="grid-template-columns: 1fr 1fr;">
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Broadcast Messages</h3>
+                        <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem;">Send a message to all tenants in a specific property.</p>
+                        <button class="btn btn-primary">New Broadcast</button>
+                    </div>
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">Auto-Responder Settings</h3>
+                        <ul class="activity-list">
+                            <li class="activity-item"><div class="activity-time">Active</div><p class="activity-text">After-hours maintenance emergency reply</p></li>
+                            <li class="activity-item"><div class="activity-time">Active</div><p class="activity-text">Rent reminder (3 days before due)</p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Summary -->
+                <div class="panel">
+                    <h3 class="panel-title mb-3">Communication Health</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">Average response time is currently 1.5 hours during business hours.</p>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settings" class="tab-pane">
+                <!-- Section 1: Stats -->
+                <div class="grid-4 mb-4">
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Profile Settings</h4><h2>Active</h2></div>
+                        <div class="stat-icon" style="background: rgba(79, 70, 229, 0.1); color: var(--primary);"><i class="fas fa-user-cog"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Billing Plan</h4><h2>Pro</h2></div>
+                        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);"><i class="fas fa-credit-card"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Integrations</h4><h2>4 Connected</h2></div>
+                        <div class="stat-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent);"><i class="fas fa-plug"></i></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info"><h4>Security</h4><h2>High</h2></div>
+                        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);"><i class="fas fa-shield-alt"></i></div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Table -->
+                <div class="panel mb-4">
+                    <div class="panel-header">
+                        <h3 class="panel-title">Team Management</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr><th>User</th><th>Role</th><th>Last Login</th><th>Action</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>John Doe</td><td>Admin</td><td>Just now</td><td><a href="#" style="color: var(--primary);">Edit</a></td></tr>
+                                <tr><td>Sarah Williams</td><td>Manager</td><td>2 hours ago</td><td><a href="#" style="color: var(--primary);">Edit</a></td></tr>
+                                <tr><td>Mike Ross</td><td>Maintenance</td><td>Yesterday</td><td><a href="#" style="color: var(--primary);">Edit</a></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: 2-Column Info -->
+                <div class="grid-2 mb-4" style="grid-template-columns: 1fr 1fr;">
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">System Preferences</h3>
+                        <ul class="activity-list" style="list-style: none;">
+                            <li style="margin-bottom: 0.75rem;"><input type="checkbox" checked> Enable email notifications</li>
+                            <li style="margin-bottom: 0.75rem;"><input type="checkbox" checked> SMS alerts for emergencies</li>
+                            <li><input type="checkbox"> Dark mode by default</li>
+                        </ul>
+                    </div>
+                    <div class="panel">
+                        <h3 class="panel-title mb-3">API & Integrations</h3>
+                        <ul class="activity-list">
+                            <li class="activity-item"><div class="activity-time">Connected</div><p class="activity-text">Stripe Payment Gateway</p></li>
+                            <li class="activity-item"><div class="activity-time">Connected</div><p class="activity-text">QuickBooks Online</p></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Summary -->
+                <div class="panel">
+                    <h3 class="panel-title mb-3">Subscription Details</h3>
+                    <p style="color: var(--text-muted); font-size: 0.875rem;">You are currently on the Pro Plan. Your next billing cycle starts on Nov 1, 2026.</p>
+                </div>
+            </div>
             
         </div>
     </main>
@@ -471,5 +960,35 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and panes
+                    tabLinks.forEach(l => l.classList.remove('active'));
+                    tabPanes.forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding tab pane
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    // If on mobile/tablet, close sidebar after clicking a link
+                    const sidebar = document.querySelector('.sidebar');
+                    if (window.innerWidth <= 1024 && sidebar.classList.contains('active')) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
+

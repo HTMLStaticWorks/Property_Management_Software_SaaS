@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Features - PropManage SaaS</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
@@ -13,12 +13,14 @@
 
     <style>
         .features-hero {
-            padding: 10rem 0 6rem;
+            padding: 13rem 0 8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
             text-align: center;
-            background: var(--bg-card);
             position: relative;
             overflow: hidden;
         }
+        .features-hero h1, .features-hero p, .features-hero .subheading { color: white; }
         .features-hero::before {
             content: '';
             position: absolute;
@@ -97,6 +99,7 @@
             </ul>
             <div class="nav-actions">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle RTL" style="margin-left: 10px;"><i class="fas fa-exchange-alt"></i></button>
                 <a href="login.html" class="btn btn-primary">Login</a>
             </div>
         </div>
@@ -122,22 +125,22 @@
             
             <div class="grid-4">
                 <div class="card-3d" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-icon"><i class="fas fa-user-check"></i></div>
+                    <div class="card-icon" style="margin: 0 auto 1.5rem auto;"><i class="fas fa-user-check"></i></div>
                     <h4>Screening & Background</h4>
                     <p>Run instant credit, criminal, and eviction reports directly through the platform.</p>
                 </div>
                 <div class="card-3d" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-icon"><i class="fas fa-file-signature"></i></div>
+                    <div class="card-icon" style="margin: 0 auto 1.5rem auto;"><i class="fas fa-file-signature"></i></div>
                     <h4>Digital Leasing</h4>
                     <p>Create templates, autofill tenant data, and collect e-signatures in minutes.</p>
                 </div>
                 <div class="card-3d" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="card-icon" style="margin: 0 auto 1.5rem auto;"><i class="fas fa-mobile-alt"></i></div>
                     <h4>Tenant App</h4>
                     <p>Provide a dedicated mobile portal for payments, requests, and announcements.</p>
                 </div>
                 <div class="card-3d" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card-icon"><i class="fas fa-comments"></i></div>
+                    <div class="card-icon" style="margin: 0 auto 1.5rem auto;"><i class="fas fa-comments"></i></div>
                     <h4>Unified Inbox</h4>
                     <p>Communicate via email or SMS. Keep all conversation history in one place.</p>
                 </div>
@@ -180,7 +183,7 @@
                         </ul>
                     </div>
                     <div data-aos="fade-left" class="text-center" style="position: relative; z-index: 1;">
-                        <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=600&q=80" alt="Rent Tracking" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                        <img src="assets/images/rent_tracking_dashboard.png" alt="Rent Tracking Dashboard" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); width: 100%; max-width: 600px;">
                     </div>
                 </div>
             </div>
@@ -192,9 +195,14 @@
         <div class="container">
             <div class="grid-2 align-center">
                 <div data-aos="fade-right">
-                    <div class="grid-2" style="gap: 1rem;">
-                        <img src="https://images.unsplash.com/photo-1581141849291-1125c7b692b5?auto=format&fit=crop&w=400&q=80" alt="Maintenance 1" style="border-radius: var(--radius-lg); margin-top: 2rem;">
-                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=400&q=80" alt="Maintenance 2" style="border-radius: var(--radius-lg);">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
+                            <img src="assets/images/maintenance_1.png" alt="Maintenance Worker" style="border-radius: var(--radius-lg); width: 100%; height: 350px; object-fit: cover; box-shadow: var(--shadow-md);">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <img src="assets/images/maintenance_2.png" alt="Maintenance Tools" style="border-radius: var(--radius-lg); width: 100%; height: 200px; object-fit: cover; box-shadow: var(--shadow-md);">
+                            <img src="assets/images/maintenance_3.png" alt="Maintenance App" style="border-radius: var(--radius-lg); width: 100%; height: 250px; object-fit: cover; box-shadow: var(--shadow-md);">
+                        </div>
                     </div>
                 </div>
                 <div data-aos="fade-left" style="padding-left: 2rem;">
@@ -305,4 +313,5 @@
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 

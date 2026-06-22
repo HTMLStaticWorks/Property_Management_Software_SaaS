@@ -9,7 +9,11 @@
 
 [dir="rtl"] .nav-links {
     margin-right: auto;
-    margin-left: 0;
+    margin-left: 2rem; /* Add gap between nav-links and nav-actions */
+}
+
+[dir="rtl"] .nav-actions {
+    margin-right: 1rem;
 }
 
 [dir="rtl"] .nav-links a::after {
@@ -66,4 +70,14 @@
 
 [dir="rtl"] .fa-arrow-left::before {
     content: "\f061"; /* Right arrow */
+}
+
+/* Fix gap for theme/rtl toggle in RTL mode */
+[dir="rtl"] #rtl-toggle {
+    margin-left: 0 !important;
+    margin-right: 1.5rem !important;
+}
+
+[dir="rtl"] .top-toggles #rtl-toggle {
+    margin-right: 0 !important;
 }

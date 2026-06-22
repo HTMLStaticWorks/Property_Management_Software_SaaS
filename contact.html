@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - PropManage SaaS</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
@@ -13,10 +13,12 @@
 
     <style>
         .contact-hero {
-            padding: 10rem 0 5rem;
-            background: var(--bg-card);
+            padding: 13rem 0 8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
             text-align: center;
         }
+        .contact-hero h1, .contact-hero p, .contact-hero .subheading { color: white; }
         
         .contact-method-card {
             background: var(--bg-card);
@@ -30,6 +32,11 @@
             border-color: var(--primary);
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
+        }
+        .contact-method-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--primary);
+            color: white;
         }
         
         .contact-form-wrapper {
@@ -83,6 +90,7 @@
             </ul>
             <div class="nav-actions">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle RTL" style="margin-left: 10px;"><i class="fas fa-exchange-alt"></i></button>
                 <a href="login.html" class="btn btn-primary">Login</a>
             </div>
         </div>
@@ -102,25 +110,25 @@
         <div class="container">
             <div class="grid-4">
                 <div class="contact-method-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-comments fa-2x mb-3" style="color: var(--primary);"></i>
+                    <div class="card-icon" style="margin: 0 auto 1.5rem;"><i class="fas fa-comments"></i></div>
                     <h4>Chat to Sales</h4>
                     <p class="text-muted" style="font-size: 0.9rem;">Speak to our friendly team.</p>
                     <a href="mailto:sales@propmanage.com" style="font-weight: 500;">sales@propmanage.com</a>
                 </div>
                 <div class="contact-method-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-headset fa-2x mb-3" style="color: var(--primary);"></i>
+                    <div class="card-icon" style="margin: 0 auto 1.5rem;"><i class="fas fa-headset"></i></div>
                     <h4>Support</h4>
                     <p class="text-muted" style="font-size: 0.9rem;">We're here to help.</p>
                     <a href="mailto:support@propmanage.com" style="font-weight: 500;">support@propmanage.com</a>
                 </div>
                 <div class="contact-method-card" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-map-marker-alt fa-2x mb-3" style="color: var(--primary);"></i>
+                    <div class="card-icon" style="margin: 0 auto 1.5rem;"><i class="fas fa-map-marker-alt"></i></div>
                     <h4>Visit Us</h4>
                     <p class="text-muted" style="font-size: 0.9rem;">Visit our office HQ.</p>
                     <a href="#locations" style="font-weight: 500;">View Locations</a>
                 </div>
                 <div class="contact-method-card" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-phone-alt fa-2x mb-3" style="color: var(--primary);"></i>
+                    <div class="card-icon" style="margin: 0 auto 1.5rem;"><i class="fas fa-phone-alt"></i></div>
                     <h4>Call Us</h4>
                     <p class="text-muted" style="font-size: 0.9rem;">Mon-Fri from 8am to 5pm.</p>
                     <a href="tel:+18001234567" style="font-weight: 500;">+1 (800) 123-4567</a>
@@ -134,7 +142,7 @@
         <div class="container">
             <div class="grid-2 align-center">
                 <div data-aos="fade-right">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Contact Us" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                    <img src="assets/images/contact.png" alt="Contact Us" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); max-width: 100%; display: block;">
                 </div>
                 <div data-aos="fade-left">
                     <div class="contact-form-wrapper">
@@ -175,34 +183,6 @@
         </div>
     </section>
 
-    <!-- SECTION 4: Office Locations -->
-    <section id="locations" class="py-section">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="subheading">Global Presence</span>
-                <h2>Our Offices</h2>
-            </div>
-            
-            <div class="grid-2">
-                <div class="location-card" data-aos="fade-right">
-                    <img src="https://images.unsplash.com/photo-1531234799389-dcb7651eb0a2?auto=format&fit=crop&w=800&q=80" alt="Austin HQ" class="location-img">
-                    <div class="location-info">
-                        <h3 class="mb-2">Austin, TX (HQ)</h3>
-                        <p class="text-muted mb-3"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 100 Congress Ave, Suite 2000<br>Austin, TX 78701</p>
-                        <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem;">Get Directions</a>
-                    </div>
-                </div>
-                <div class="location-card" data-aos="fade-left">
-                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80" alt="London Office" class="location-img">
-                    <div class="location-info">
-                        <h3 class="mb-2">London, UK</h3>
-                        <p class="text-muted mb-3"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 1 Canada Square, Canary Wharf<br>London E14 5AB</p>
-                        <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem;">Get Directions</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- SECTION 5: Map Integration Area -->
     <section class="py-section bg-main">
@@ -269,4 +249,5 @@
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
 

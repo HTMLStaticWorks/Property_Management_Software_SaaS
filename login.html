@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - PropManage SaaS</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
@@ -13,59 +13,17 @@
 
     <style>
         body {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--bg-main) 0%, var(--primary-light) 100%);
-            overflow: hidden;
-        }
-        
-        .auth-container {
-            width: 100%;
-            max-width: 1200px;
-            height: 90vh;
-            max-height: 800px;
-            background: var(--bg-card);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-2xl);
-            overflow: hidden;
-            display: flex;
-        }
-        
-        .auth-left {
-            flex: 1;
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .auth-right {
-            flex: 1;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: white;
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .auth-right::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            mix-blend-mode: overlay;
+            padding: 1rem;
+            box-sizing: border-box;
         }
         
         .glass-login-card {
+            position: relative;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
@@ -73,128 +31,118 @@
             border-radius: var(--radius-lg);
             padding: 3rem;
             box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        @media (max-width: 480px) {
+            .glass-login-card {
+                padding: 2.5rem 1.5rem;
+                margin-top: 3.5rem;
+            }
+            .top-toggles {
+                top: 1rem !important;
+                right: 1rem !important;
+                gap: 0.5rem !important;
+            }
+            .top-toggle-btn {
+                width: 35px !important;
+                height: 35px !important;
+            }
+            .logo span {
+                font-size: 1.25rem !important;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .top-toggles {
+                position: fixed !important;
+                top: 2rem !important;
+                right: 2rem !important;
+            }
         }
         
         [data-theme="dark"] .glass-login-card {
             background: rgba(30, 41, 59, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .security-benefits {
-            margin-top: 3rem;
-            position: relative;
-            z-index: 2;
-        }
-        .security-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .security-item .icon {
-            width: 40px; height: 40px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
+        
+        [data-theme="dark"] .social-btn {
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
         }
         
-        .back-home {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-        .back-home:hover { color: var(--primary); }
-        
-        @media (max-width: 992px) {
-            .auth-right { display: none; }
-            .auth-container { height: auto; margin: 2rem; }
+        [data-theme="dark"] .top-toggle-btn {
+            background: rgba(30, 41, 59, 0.8) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
         }
     </style>
 </head>
 <body>
 
-    <div class="auth-container">
-        
-        <!-- Login Form Section -->
-        <div class="auth-left">
-            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
-            
-            <div class="glass-login-card" data-aos="fade-up">
-                <div class="text-center mb-4">
-                    <a href="index.html" class="logo justify-center mb-2">
-                        <i class="fas fa-building fa-2x"></i>
-                    </a>
-                    <h2>Welcome Back</h2>
-                    <p>Log in to your PropManage dashboard.</p>
-                </div>
-                
-                <form action="dashboard.html">
-                    <div class="form-group">
-                        <label class="form-label">Email Address</label>
-                        <input type="email" class="form-control" placeholder="you@company.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label d-flex justify-between">
-                            Password
-                            <a href="#" style="font-size: 0.875rem;">Forgot password?</a>
-                        </label>
-                        <input type="password" class="form-control" placeholder="••••••••" required>
-                    </div>
-                    <div class="form-group mb-4" style="display: flex; align-items: center; gap: 0.5rem;">
-                        <input type="checkbox" id="remember">
-                        <label for="remember" style="margin: 0; font-size: 0.9rem; color: var(--text-muted); cursor: pointer;">Remember me for 30 days</label>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
-                    
-                    <p class="text-center mt-4" style="font-size: 0.9rem;">
-                        Don't have an account? <a href="register.html">Start your free trial</a>
-                    </p>
-                </form>
-            </div>
+    <!-- Theme & RTL Toggles (Top Right of Page) -->
+    <div class="top-toggles" style="position: absolute; top: 1.5rem; right: 1.5rem; display: flex; gap: 1rem; z-index: 10;">
+        <button id="theme-toggle" class="icon-btn top-toggle-btn" aria-label="Toggle Dark Mode" style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.1); cursor: pointer; color: var(--text-color);"><i class="fas fa-moon"></i></button>
+        <button id="rtl-toggle" class="icon-btn top-toggle-btn" aria-label="Toggle RTL" style="background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.1); cursor: pointer; color: var(--text-color);"><i class="fas fa-exchange-alt"></i></button>
+    </div>
+
+    <div class="glass-login-card" data-aos="fade-up">
+
+        <div class="text-center mb-4">
+            <a href="index.html" class="logo justify-center mb-3" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--primary);">
+                <i class="fas fa-building fa-2x"></i>
+                <span style="font-size: 1.5rem; font-weight: bold;">PropManage</span>
+            </a>
+            <h2>Welcome Back</h2>
+            <p>Log in to your dashboard.</p>
         </div>
         
-        <!-- SaaS Illustration & Security Section -->
-        <div class="auth-right">
-            <div style="position: relative; z-index: 2;" data-aos="fade-left" data-aos-delay="200">
-                <h2 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">Enterprise-Grade Security for Your Portfolio.</h2>
-                <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 3rem;">We protect your data so you can focus on growing your business.</p>
-                
-                <div class="security-benefits">
-                    <div class="security-item">
-                        <div class="icon"><i class="fas fa-lock"></i></div>
-                        <div>
-                            <h4 style="color: white; margin: 0;">256-Bit Encryption</h4>
-                            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.9rem;">Bank-level security for all financial transactions.</p>
-                        </div>
-                    </div>
-                    <div class="security-item">
-                        <div class="icon"><i class="fas fa-shield-alt"></i></div>
-                        <div>
-                            <h4 style="color: white; margin: 0;">SOC 2 Compliant</h4>
-                            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.9rem;">Independently audited for data protection.</p>
-                        </div>
-                    </div>
-                    <div class="security-item">
-                        <div class="icon"><i class="fas fa-server"></i></div>
-                        <div>
-                            <h4 style="color: white; margin: 0;">99.9% Uptime</h4>
-                            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.9rem;">Reliable cloud infrastructure powered by AWS.</p>
-                        </div>
-                    </div>
+        <form action="dashboard.html">
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" placeholder="you@company.com" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <div style="position: relative;">
+                    <input type="password" class="form-control" placeholder="••••••••" required style="padding-right: 2.5rem;">
+                    <i class="fas fa-eye" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--text-muted);" onclick="const input = this.previousElementSibling; if (input.type === 'password') { input.type = 'text'; this.classList.remove('fa-eye'); this.classList.add('fa-eye-slash'); } else { input.type = 'password'; this.classList.remove('fa-eye-slash'); this.classList.add('fa-eye'); }"></i>
                 </div>
             </div>
-            
-            <div style="position: absolute; bottom: -50px; right: -50px; opacity: 0.2;">
-                <i class="fas fa-chart-line" style="font-size: 300px;"></i>
+            <div class="form-group mb-4" style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input type="checkbox" id="remember">
+                    <label for="remember" style="margin: 0; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; white-space: nowrap;">Remember me</label>
+                </div>
+                <a href="#" style="font-size: 0.8rem; white-space: nowrap;">Forgot password?</a>
             </div>
-        </div>
-        
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
+            
+            <p class="text-center" style="font-size: 0.9rem; margin-top: 1.5rem;">
+                Don't have an account? <a href="register.html">Start your free trial</a>
+            </p>
+            
+            <div class="mt-4">
+                <div style="display: flex; align-items: center; text-align: center; color: var(--text-muted); margin-bottom: 1rem;">
+                    <div style="flex: 1; height: 1px; background: var(--border-color);"></div>
+                    <span style="padding: 0 10px; font-size: 0.875rem;">or continue with</span>
+                    <div style="flex: 1; height: 1px; background: var(--border-color);"></div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-outline social-btn" style="flex: 1; display: flex; justify-content: center; gap: 0.5rem; background: transparent; border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-md); cursor: pointer; color: var(--text-color);">
+                        <i class="fab fa-google" style="color: #DB4437;"></i> Google
+                    </button>
+                    <button type="button" class="btn btn-outline social-btn" style="flex: 1; display: flex; justify-content: center; gap: 0.5rem; background: transparent; border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-md); cursor: pointer; color: var(--text-color);">
+                        <i class="fab fa-apple"></i> Apple
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+

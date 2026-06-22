@@ -6,7 +6,7 @@
     <title>PropManage - Advanced SaaS for Enterprise Property Managers</title>
     <meta name="description" content="Scale your real estate portfolio with our enterprise-grade property management software featuring advanced reporting and ROI calculators.">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
@@ -14,7 +14,10 @@
 
     <style>
         .premium-hero {
-            padding: 12rem 0 6rem;
+            padding: 70px 0 0 0; /* Only offset for navbar if needed */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             background: linear-gradient(135deg, var(--bg-main) 0%, var(--primary-light) 100%);
             position: relative;
         }
@@ -128,6 +131,7 @@
             </ul>
             <div class="nav-actions">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle RTL" style="margin-left: 10px;"><i class="fas fa-exchange-alt"></i></button>
                 <a href="login.html" class="btn btn-primary">Login</a>
             </div>
         </div>
@@ -150,7 +154,7 @@
                     </div>
                 </div>
                 <div data-aos="fade-left" class="floating">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Advanced Dashboard" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-xl);">
+                    <img src="assets/images/home2-ai-dashboard.png" alt="Advanced AI Dashboard" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); width: 100%;">
                 </div>
             </div>
         </div>
@@ -200,25 +204,33 @@
             </div>
             
             <div class="grid-4">
-                <div class="card-3d" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-icon"><i class="fas fa-sitemap"></i></div>
-                    <h4>Multi-Entity Support</h4>
-                    <p>Manage multiple LLCs and trust accounts from a single unified login.</p>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="100" style="padding: 0; overflow: hidden;">
+                    <img src="assets/images/feature_multi_entity.png" alt="Multi-Entity Support" style="width: 100%; height: 180px; object-fit: cover; display: block;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="margin-top: 0;">Multi-Entity Support</h4>
+                        <p style="margin-bottom: 0;">Manage multiple LLCs and trust accounts from a single unified login.</p>
+                    </div>
                 </div>
-                <div class="card-3d" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                    <h4>Automated CAM Reconciliations</h4>
-                    <p>Complex common area maintenance calculations handled instantly.</p>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="200" style="padding: 0; overflow: hidden;">
+                    <img src="assets/images/feature_cam.png" alt="Automated CAM Reconciliations" style="width: 100%; height: 180px; object-fit: cover; display: block;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="margin-top: 0;">Automated CAM Reconciliations</h4>
+                        <p style="margin-bottom: 0;">Complex common area maintenance calculations handled instantly.</p>
+                    </div>
                 </div>
-                <div class="card-3d" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-icon"><i class="fas fa-plug"></i></div>
-                    <h4>API Integrations</h4>
-                    <p>Connect seamlessly with QuickBooks, Xero, and major banking partners.</p>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="300" style="padding: 0; overflow: hidden;">
+                    <img src="assets/images/feature_api.png" alt="API Integrations" style="width: 100%; height: 180px; object-fit: cover; display: block;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="margin-top: 0;">API Integrations</h4>
+                        <p style="margin-bottom: 0;">Connect seamlessly with QuickBooks, Xero, and major banking partners.</p>
+                    </div>
                 </div>
-                <div class="card-3d" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card-icon"><i class="fas fa-user-shield"></i></div>
-                    <h4>Role-Based Access</h4>
-                    <p>Granular permissions for property managers, leasing agents, and maintenance staff.</p>
+                <div class="card-3d" data-aos="fade-up" data-aos-delay="400" style="padding: 0; overflow: hidden;">
+                    <img src="assets/images/feature_role.png" alt="Role-Based Access" style="width: 100%; height: 180px; object-fit: cover; display: block;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="margin-top: 0;">Role-Based Access</h4>
+                        <p style="margin-bottom: 0;">Granular permissions for property managers, leasing agents, and maintenance staff.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -392,4 +404,5 @@
     </script>
 </body>
 </html>
+
 
