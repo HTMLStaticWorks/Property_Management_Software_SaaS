@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Features - PropManage SaaS</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -20,7 +21,13 @@
             position: relative;
             overflow: hidden;
         }
-        .features-hero h1, .features-hero p, .features-hero .subheading { color: white; }
+
+        .features-hero h1,
+        .features-hero p,
+        .features-hero .subheading {
+            color: white;
+        }
+
         .features-hero::before {
             content: '';
             position: absolute;
@@ -32,11 +39,12 @@
             z-index: 0;
             opacity: 0.5;
         }
+
         .hero-content-inner {
             position: relative;
             z-index: 1;
         }
-        
+
         .feature-showcase {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
@@ -46,6 +54,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .feature-showcase::after {
             content: '';
             position: absolute;
@@ -56,15 +65,18 @@
             background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.05));
             z-index: 0;
         }
+
         .feature-list {
             list-style: none;
             padding: 0;
         }
+
         .feature-list li {
             display: flex;
             align-items: flex-start;
             margin-bottom: 1.5rem;
         }
+
         .feature-list .icon {
             width: 30px;
             height: 30px;
@@ -77,13 +89,18 @@
             margin-right: 1rem;
             flex-shrink: 0;
         }
+
+        [data-theme="dark"] .financial-panel {
+            background: var(--bg-card) !important;
+        }
         [data-theme="dark"] .financial-panel h4,
         [data-theme="dark"] .financial-panel p {
-            color: #111827 !important;
+            color: #ffffff !important;
         }
     </style>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
+
 <body>
 
     <!-- Navbar -->
@@ -91,7 +108,7 @@
         <div class="container d-flex justify-between align-center">
             <a href="index.html" class="logo"><i class="fas fa-building"></i> PropManage</a>
             <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
-                        <ul class="nav-links">
+            <ul class="nav-links">
                 <li><a href="index.html">Home 1</a></li>
                 <li><a href="home-2.html">Home 2</a></li>
                 <li><a href="about.html">About</a></li>
@@ -103,8 +120,10 @@
                 <li><a href="dashboard.html">Dashboard</a></li>
             </ul>
             <div class="nav-actions">
-                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
-                <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle RTL" style="margin-left: 10px;"><i class="fas fa-exchange-alt"></i></button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode"><i
+                        class="fas fa-moon"></i></button>
+                <button id="rtl-toggle" class="theme-toggle" aria-label="Toggle RTL" style="margin-left: 10px;"><i
+                        class="fas fa-exchange-alt"></i></button>
                 <a href="login.html" class="btn btn-primary">Login</a>
             </div>
         </div>
@@ -115,7 +134,8 @@
         <div class="container hero-content-inner" data-aos="fade-up">
             <span class="subheading">Platform Capabilities</span>
             <h1 class="mb-3">Everything You Need to Scale</h1>
-            <p style="max-width: 600px; margin: 0 auto 2rem;">Discover the powerful tools that make PropManage the leading choice for modern property management professionals.</p>
+            <p style="max-width: 600px; margin: 0 auto 2rem;">Discover the powerful tools that make PropManage the
+                leading choice for modern property management professionals.</p>
             <a href="#tenant-management" class="btn btn-primary">Explore Features <i class="fas fa-arrow-down"></i></a>
         </div>
     </header>
@@ -127,7 +147,7 @@
                 <span class="subheading">Tenant Experience</span>
                 <h2>Complete Tenant Management</h2>
             </div>
-            
+
             <div class="grid-4">
                 <div class="card-3d" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-icon" style="margin: 0 auto 1.5rem auto;"><i class="fas fa-user-check"></i></div>
@@ -135,7 +155,8 @@
                     <p>Run instant credit, criminal, and eviction reports directly through the platform.</p>
                 </div>
                 <div class="card-3d" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-icon" style="margin: 0 auto 1.5rem auto;"><i class="fas fa-file-signature"></i></div>
+                    <div class="card-icon" style="margin: 0 auto 1.5rem auto;"><i class="fas fa-file-signature"></i>
+                    </div>
                     <h4>Digital Leasing</h4>
                     <p>Create templates, autofill tenant data, and collect e-signatures in minutes.</p>
                 </div>
@@ -161,21 +182,24 @@
                     <div data-aos="fade-right" style="position: relative; z-index: 1;">
                         <span class="subheading">Financials</span>
                         <h2 class="mb-3">Automated Rent Tracking System</h2>
-                        <p class="mb-4">Never chase a rent check again. Our automated system handles the entire collection cycle from invoicing to direct deposit.</p>
-                        
+                        <p class="mb-4">Never chase a rent check again. Our automated system handles the entire
+                            collection cycle from invoicing to direct deposit.</p>
+
                         <ul class="feature-list">
                             <li>
                                 <div class="icon"><i class="fas fa-check"></i></div>
                                 <div>
                                     <h4 class="mb-1">Autopay Enrollment</h4>
-                                    <p class="text-muted">Tenants can set and forget their payments via ACH or Credit Card.</p>
+                                    <p class="text-muted">Tenants can set and forget their payments via ACH or Credit
+                                        Card.</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="icon"><i class="fas fa-check"></i></div>
                                 <div>
                                     <h4 class="mb-1">Automated Late Fees</h4>
-                                    <p class="text-muted">Set your rules once, and the system automatically calculates and applies late fees.</p>
+                                    <p class="text-muted">Set your rules once, and the system automatically calculates
+                                        and applies late fees.</p>
                                 </div>
                             </li>
                             <li>
@@ -188,7 +212,8 @@
                         </ul>
                     </div>
                     <div data-aos="fade-left" class="text-center" style="position: relative; z-index: 1;">
-                        <img src="assets/images/rent_tracking_dashboard.png" alt="Rent Tracking Dashboard" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); width: 100%; max-width: 600px;">
+                        <img src="assets/images/rent_tracking_dashboard.png" alt="Rent Tracking Dashboard"
+                            style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); width: 100%; max-width: 600px;">
                     </div>
                 </div>
             </div>
@@ -202,30 +227,40 @@
                 <div data-aos="fade-right">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
-                            <img src="assets/images/maintenance_1.png" alt="Maintenance Worker" style="border-radius: var(--radius-lg); width: 100%; height: 350px; object-fit: cover; box-shadow: var(--shadow-md);">
+                            <img src="assets/images/maintenance_1.png" alt="Maintenance Worker"
+                                style="border-radius: var(--radius-lg); width: 100%; height: 350px; object-fit: cover; box-shadow: var(--shadow-md);">
                         </div>
                         <div style="display: flex; flex-direction: column; gap: 1rem;">
-                            <img src="assets/images/maintenance_2.png" alt="Maintenance Tools" style="border-radius: var(--radius-lg); width: 100%; height: 200px; object-fit: cover; box-shadow: var(--shadow-md);">
-                            <img src="assets/images/maintenance_3.png" alt="Maintenance App" style="border-radius: var(--radius-lg); width: 100%; height: 250px; object-fit: cover; box-shadow: var(--shadow-md);">
+                            <img src="assets/images/maintenance_2.png" alt="Maintenance Tools"
+                                style="border-radius: var(--radius-lg); width: 100%; height: 200px; object-fit: cover; box-shadow: var(--shadow-md);">
+                            <img src="assets/images/maintenance_3.png" alt="Maintenance App"
+                                style="border-radius: var(--radius-lg); width: 100%; height: 250px; object-fit: cover; box-shadow: var(--shadow-md);">
                         </div>
                     </div>
                 </div>
                 <div data-aos="fade-left" style="padding-left: 2rem;">
                     <span class="subheading">Operations</span>
                     <h2 class="mb-3">Streamlined Maintenance Management</h2>
-                    <p class="mb-4">Take the headache out of property repairs. Coordinate between tenants, vendors, and property owners without leaving the app.</p>
-                    
+                    <p class="mb-4">Take the headache out of property repairs. Coordinate between tenants, vendors, and
+                        property owners without leaving the app.</p>
+
                     <div class="glass-panel mb-3" style="padding: 1.5rem;">
-                        <h4 class="mb-1"><i class="fas fa-camera" style="color: var(--primary); margin-right: 10px;"></i> Photo & Video Uploads</h4>
-                        <p style="margin:0; font-size: 0.9rem;">Tenants can attach media to requests, helping you accurately diagnose issues.</p>
+                        <h4 class="mb-1"><i class="fas fa-camera"
+                                style="color: var(--primary); margin-right: 10px;"></i> Photo & Video Uploads</h4>
+                        <p style="margin:0; font-size: 0.9rem;">Tenants can attach media to requests, helping you
+                            accurately diagnose issues.</p>
                     </div>
                     <div class="glass-panel mb-3" style="padding: 1.5rem;">
-                        <h4 class="mb-1"><i class="fas fa-truck" style="color: var(--primary); margin-right: 10px;"></i> Vendor Dispatch</h4>
-                        <p style="margin:0; font-size: 0.9rem;">Send work orders directly to your preferred contractors with one click.</p>
+                        <h4 class="mb-1"><i class="fas fa-truck" style="color: var(--primary); margin-right: 10px;"></i>
+                            Vendor Dispatch</h4>
+                        <p style="margin:0; font-size: 0.9rem;">Send work orders directly to your preferred contractors
+                            with one click.</p>
                     </div>
                     <div class="glass-panel" style="padding: 1.5rem;">
-                        <h4 class="mb-1"><i class="fas fa-receipt" style="color: var(--primary); margin-right: 10px;"></i> Invoice Processing</h4>
-                        <p style="margin:0; font-size: 0.9rem;">Vendors upload bills directly to the work order for easy approval and payment.</p>
+                        <h4 class="mb-1"><i class="fas fa-receipt"
+                                style="color: var(--primary); margin-right: 10px;"></i> Invoice Processing</h4>
+                        <p style="margin:0; font-size: 0.9rem;">Vendors upload bills directly to the work order for easy
+                            approval and payment.</p>
                     </div>
                 </div>
             </div>
@@ -240,18 +275,21 @@
                 <h2>Bank-Grade Financial Reporting</h2>
                 <p>Gain deep insights into your portfolio's performance with customizable reports.</p>
             </div>
-            
-            <div class="glass-panel financial-panel" style="padding: 3rem; background: linear-gradient(135deg, var(--bg-card) 0%, var(--primary-light) 100%);">
+
+            <div class="glass-panel financial-panel"
+                style="padding: 3rem; background: linear-gradient(135deg, var(--bg-card) 0%, var(--primary-light) 100%);">
                 <div class="grid-3" data-aos="zoom-in">
                     <div class="text-center">
                         <i class="fas fa-chart-line fa-3x mb-3" style="color: var(--primary);"></i>
                         <h4>Profit & Loss</h4>
-                        <p style="font-size: 0.9rem;">Generate detailed P&L statements per property, portfolio, or owner.</p>
+                        <p style="font-size: 0.9rem;">Generate detailed P&L statements per property, portfolio, or
+                            owner.</p>
                     </div>
                     <div class="text-center">
                         <i class="fas fa-file-invoice fa-3x mb-3" style="color: var(--primary);"></i>
                         <h4>Tax Preparation</h4>
-                        <p style="font-size: 0.9rem;">Export Schedule E reports and 1099s directly to your accountant.</p>
+                        <p style="font-size: 0.9rem;">Export Schedule E reports and 1099s directly to your accountant.
+                        </p>
                     </div>
                     <div class="text-center">
                         <i class="fas fa-university fa-3x mb-3" style="color: var(--primary);"></i>
@@ -272,7 +310,8 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <a href="index.html" class="logo mb-3"><i class="fas fa-building"></i> PropManage</a>
-                    <p>The all-in-one SaaS platform designed to help landlords and property managers scale their portfolios with ease and efficiency.</p>
+                    <p>The all-in-one SaaS platform designed to help landlords and property managers scale their
+                        portfolios with ease and efficiency.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -304,7 +343,8 @@
                     <p>Subscribe for property management tips and updates.</p>
                     <form class="newsletter-form">
                         <input type="email" placeholder="Your email address" required>
-                        <button type="submit" class="btn btn-primary" style="padding: 0.75rem;"><i class="fas fa-paper-plane"></i></button>
+                        <button type="submit" class="btn btn-primary" style="padding: 0.75rem;"><i
+                                class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
             </div>
@@ -317,6 +357,5 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
-
-
