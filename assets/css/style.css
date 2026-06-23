@@ -136,8 +136,7 @@ img {
 }
 
 @media (max-width: 768px) {
-    .grid-2, .grid-3 { grid-template-columns: 1fr !important; }
-    .grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
     h1 { font-size: 2.25rem; }
     h2 { font-size: 1.875rem; }
     .py-section { padding: 3rem 0; }
@@ -289,14 +288,28 @@ img {
     color: white;
 }
 
+.btn-secondary {
+    background: linear-gradient(135deg, var(--secondary), #059669);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: white;
+}
+
 .btn-outline {
-    background: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    box-shadow: var(--shadow-md);
+    border: none;
 }
 
 .btn-outline:hover {
-    background: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
     color: white;
 }
 
@@ -470,9 +483,10 @@ img {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding-top: 3rem;
+        padding-top: 1rem;
         transition: var(--transition);
-        gap: 1.5rem;
+        gap: 0.5rem;
+        overflow-y: auto;
     }
     
     .nav-links.active {
@@ -491,8 +505,8 @@ img {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1.5rem;
-        margin-top: 1rem;
+        gap: 0.8rem;
+        margin-top: 0.5rem;
     }
 
     .nav-actions.mobile-active .theme-rtl-wrapper {

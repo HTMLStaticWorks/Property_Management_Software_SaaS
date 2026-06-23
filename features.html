@@ -77,6 +77,10 @@
             margin-right: 1rem;
             flex-shrink: 0;
         }
+        [data-theme="dark"] .financial-panel h4,
+        [data-theme="dark"] .financial-panel p {
+            color: #111827 !important;
+        }
     </style>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
@@ -237,7 +241,7 @@
                 <p>Gain deep insights into your portfolio's performance with customizable reports.</p>
             </div>
             
-            <div class="glass-panel" style="padding: 3rem; background: linear-gradient(135deg, var(--bg-card) 0%, var(--primary-light) 100%);">
+            <div class="glass-panel financial-panel" style="padding: 3rem; background: linear-gradient(135deg, var(--bg-card) 0%, var(--primary-light) 100%);">
                 <div class="grid-3" data-aos="zoom-in">
                     <div class="text-center">
                         <i class="fas fa-chart-line fa-3x mb-3" style="color: var(--primary);"></i>
